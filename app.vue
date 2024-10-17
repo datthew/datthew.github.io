@@ -2,11 +2,11 @@
   <NuxtLayout>
     <v-app>
 
-<Header/>
-      <NuxtPage />
-
-
-
+      <Header/>
+      <v-main>
+        <NuxtPage/>
+      </v-main>
+      <Footer/>
 
     </v-app>
   </NuxtLayout>
@@ -22,3 +22,7 @@ useHead({
   ],
 })
 </script>
+
+<style scoped>
+
+</style>
