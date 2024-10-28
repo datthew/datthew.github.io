@@ -1,15 +1,19 @@
 <template>
   <NuxtLayout>
+
     <v-app>
 
-      <Header/>
-      <v-main>
-        <NuxtPage/>
-      </v-main>
-      <Footer/>
+      <!--      <Sidebar/>-->
+
+      <!--      <v-main>-->
+      <!--      <NuxtPage/>-->
+      <!--        <Footer/>-->
+      <!--      </v-main>-->
 
     </v-app>
+
   </NuxtLayout>
+
 </template>
 
 <script setup>
@@ -23,6 +27,8 @@ useHead({
 })
 </script>
 
-<style scoped>
-
+<style>
+html {
+  scroll-behavior: smooth;
+}
 </style>

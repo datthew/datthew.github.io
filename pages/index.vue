@@ -1,17 +1,18 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
 
-  <v-container>
-    <v-row>
-      <v-col cols="12">
-        <v-btn color="primary">Willkommen bei Vuetify</v-btn>
-      </v-col>
-    </v-row>
+  <v-container style="height: 250px">
+    <div class="d-flex justify-center align-center h-100">
+      <v-btn class="testing" color="primary" to="dat-test">Dat test</v-btn>
+    </div>
   </v-container>
+
 </template>
+
+<script lang="ts" setup>
+definePageMeta({
+  layout: 'index-layout'
+})
+</script>
 
 <style scoped>
 

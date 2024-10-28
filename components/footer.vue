@@ -1,6 +1,6 @@
 <template>
 
-  <v-footer app class="d-flex flex-column" elevation="24">
+  <v-footer class="d-flex flex-column" elevation="24">
     <div>
       <v-btn
           v-for="icon in icons"
@@ -21,10 +21,14 @@
 
 
 <script lang="ts" setup>
-const icons = ['mdi-facebook', 'mdi-twitter', 'mdi-linkedin', 'mdi-instagram']
+const icons = ['mdi-github', 'mdi-email', 'mdi-instagram']
 </script>
 
 
 <style scoped>
-
+v-footer {
+  width: 100%;
+  bottom: 0;
+  position: relative;
+}
 </style>
