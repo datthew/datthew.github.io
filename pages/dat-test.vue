@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'sidebar-layout'
+  layout: 'mainpage-layout'
 })
 </script>
 
