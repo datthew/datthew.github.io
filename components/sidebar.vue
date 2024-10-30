@@ -1,6 +1,6 @@
 <template>
 
-  <v-navigation-drawer app class="sidebar position-sticky" permanent>
+  <v-navigation-drawer v-if="visible" app class="sidebar position-sticky" permanent>
 
     <v-list-item subtitle="Vuetify" title="My Application"></v-list-item>
 
@@ -19,28 +19,28 @@
 
 <script lang="ts" setup>
 
-// // Initialisierung der Ref-Werte
-// const scrollY = ref<number>(0)
-// const visible = ref<boolean>(false)
-//
-// // Beobachter für `scrollY`, der den Sichtbarkeitsstatus aktualisiert
-// watch(scrollY, (newScrollY) => {
-//   visible.value = newScrollY > 800
-// })
-//
-// // Funktion zur Aktualisierung des `scrollY`-Wertes bei Scroll-Events
-// const updateScroll = () => {
-//   scrollY.value = window.scrollY
-// }
-//
-// // Event-Listener hinzufügen und entfernen
-// onMounted(() => {
-//   window.addEventListener('scroll', updateScroll)
-// })
-//
-// onUnmounted(() => {
-//   window.removeEventListener('scroll', updateScroll)
-// })
+// Initialisierung der Ref-Werte
+const scrollY = ref<number>(0)
+const visible = ref<boolean>(false)
+
+// Beobachter für `scrollY`, der den Sichtbarkeitsstatus aktualisiert
+watch(scrollY, (newScrollY) => {
+  visible.value = newScrollY > 800
+})
+
+// Funktion zur Aktualisierung des `scrollY`-Wertes bei Scroll-Events
+const updateScroll = () => {
+  scrollY.value = window.scrollY
+}
+
+// Event-Listener hinzufügen und entfernen
+onMounted(() => {
+  window.addEventListener('scroll', updateScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateScroll)
+})
 </script>
 
 
