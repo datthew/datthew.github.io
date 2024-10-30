@@ -1,11 +1,36 @@
 <template>
 
-  <v-container style="height: 250px">
-    <div class="d-flex justify-center align-center h-100">
-      <v-btn class="testing" color="primary" to="dat-test">Dat test</v-btn>
-    </div>
-  </v-container>
+  <v-container class="main-content">
+    <v-row justify="center">
+      <v-col class="text-center" cols="12">
 
+        <section id="home">
+          <div class="box">Homee</div>
+        </section>
+
+        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
+
+        <section id="about">
+          <div class="box">About</div>
+        </section>
+
+        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
+
+        <section id="projects">
+          <div class="box">Projects</div>
+        </section>
+
+        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
+
+        <section id="contact">
+          <div class="box">Contact</div>
+        </section>
+
+
+        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts" setup>
@@ -15,5 +40,18 @@ definePageMeta({
 </script>
 
 <style scoped>
+.testing {
+  padding-bottom: 300px;
+  padding-top: 300px;
+}
 
+.main-content {
+  color: red;
+  background-color: yellow;
+  padding: 0;
+}
+
+.box {
+  margin: 2rem 0;
+}
 </style>

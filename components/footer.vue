@@ -1,6 +1,6 @@
 <template>
 
-  <v-footer class="d-flex flex-column align-center pb-16" elevation="24" height="120">
+  <v-footer class="flex-column align-center" elevation="24" height="120">
     <div class="footer-content">
       <v-btn
           v-for="icon in icons"
@@ -29,7 +29,5 @@ const icons = ['mdi-github', 'mdi-email', 'mdi-instagram']
 
 
 <style scoped>
-.footer-content {
-  margin-left: var(--sidebar-width);
-}
+
 </style>
