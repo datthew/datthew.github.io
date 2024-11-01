@@ -2,7 +2,7 @@
   <div>
     <v-card class="hover-box" flat @mouseenter="showSidebar" @mouseleave="hideSidebar"></v-card>
   </div>
-  
+
   <v-navigation-drawer v-if="visible"
                        app
                        class="sidebar position-sticky"
@@ -71,7 +71,7 @@ const hideSidebar = () => {
 .hover-box {
   width: 8vh;
   height: 100vh;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   position: fixed;
   left: 0;
   top: 0;
