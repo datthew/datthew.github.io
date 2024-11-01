@@ -3,7 +3,7 @@
     <v-card class="hover-box" flat @mouseenter="showSidebar" @mouseleave="hideSidebar"></v-card>
   </div>
   
-  <v-navigation-drawer v-model="visible"
+  <v-navigation-drawer v-if="visible"
                        app
                        class="sidebar position-sticky"
                        permanent
@@ -64,17 +64,8 @@ const hideSidebar = () => {
   color: #00dc82;
   background-color: green;
   min-height: 100vh;
-  position: fixed;
   top: 0;
-  left: 0;
-  width: 250px;
   z-index: 10;
-  transition: transform 0.3s ease;
-  transform: translateX(-100%);
-}
-
-.sidebar.v-navigation-drawer--is-active {
-  transform: translateX(0); /* Slide in when active */
 }
 
 .hover-box {

@@ -10,13 +10,16 @@
             <v-card class="mx-auto my-5" max-width="600">
               <v-card-text>
                 <p>
-                  Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media and Games at Hochschule Trier.
-                  My studies have provided me with a solid foundation in programming and design, allowing me to explore the exciting intersection of technology and creativity.
+                  Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media and Games at Hochschule
+                  Trier.
+                  My studies have provided me with a solid foundation in programming and design, allowing me to explore
+                  the exciting intersection of technology and creativity.
                 </p>
                 <p>
                   My journey into the world of technology began when I developed my first game as a hobby.
                   This experience ignited my passion for creating engaging and interactive experiences.
-                  Currently, I am working with Vue and TypeScript, which allows me to create dynamic web applications while building on my JavaScript knowledge.
+                  Currently, I am working with Vue and TypeScript, which allows me to create dynamic web applications
+                  while building on my JavaScript knowledge.
                 </p>
                 <p>
                   I welcome any questions, collaboration ideas, or simply a chance to connect!
@@ -33,8 +36,8 @@
             <!-- Toggle Button for each project -->
             <v-btn class="project-btn"
                    color="primary"
-                   width="90%"
                    height="10vh"
+                   width="90%"
                    @click="project.isExpanded = !project.isExpanded">
               {{ project.title }} - {{ project.isExpanded ? 'Erweiterte Ansicht' : 'Kleinere Ansicht' }}
             </v-btn>
@@ -66,21 +69,21 @@
 
                 <v-list dense>
                   <v-list-item>
-                      <v-icon color="primary">mdi-email</v-icon>
-                      <v-list-item-title>E-mail:</v-list-item-title>
-                      <v-list-item-subtitle>datvuong@gmx.de</v-list-item-subtitle>
+                    <v-icon color="primary">mdi-email</v-icon>
+                    <v-list-item-title>E-mail:</v-list-item-title>
+                    <v-list-item-subtitle>datvuong@gmx.de</v-list-item-subtitle>
                   </v-list-item>
 
                   <v-list-item>
-                      <v-icon color="primary">mdi-phone</v-icon>
-                      <v-list-item-title>Phone:</v-list-item-title>
-                      <v-list-item-subtitle>01578/7379794</v-list-item-subtitle>
+                    <v-icon color="primary">mdi-phone</v-icon>
+                    <v-list-item-title>Phone:</v-list-item-title>
+                    <v-list-item-subtitle>01578/7379794</v-list-item-subtitle>
                   </v-list-item>
 
                   <v-list-item>
-                      <v-icon color="primary">mdi-map-marker</v-icon>
-                      <v-list-item-title>Based:</v-list-item-title>
-                      <v-list-item-subtitle>Trier, Germany</v-list-item-subtitle>
+                    <v-icon color="primary">mdi-map-marker</v-icon>
+                    <v-list-item-title>Based:</v-list-item-title>
+                    <v-list-item-subtitle>Trier, Germany</v-list-item-subtitle>
                   </v-list-item>
                 </v-list>
 

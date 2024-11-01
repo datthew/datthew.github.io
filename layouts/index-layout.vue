@@ -3,9 +3,8 @@
   <Home/>
 
   <v-layout class="d-flex">
-    
-    <Sidebar/>
 
+    <Sidebar/>
     <v-layout class="d-flex flex-column flex-grow-1">
 
       <v-main>
