@@ -22,7 +22,7 @@
 
 
 <script lang="ts" setup>
-const icons = ['mdi-github', 'mdi-email', 'mdi-instagram']
+const icons = ['mdi-github', 'mdi-gitlab', 'mdi-instagram']
 
 
 </script>

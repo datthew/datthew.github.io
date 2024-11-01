@@ -4,25 +4,37 @@
     <v-row justify="center">
       <v-col class="text-center" cols="12">
 
-        <section id="home">
-          <h2>Home</h2>
-        </section>
-
-        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
-
         <section id="about">
-          <h2>About</h2>
+          <v-container fluid>
+            <h2>About me</h2>
+            <v-card class="mx-auto my-5" max-width="600">
+              <v-card-text>
+                <p>
+                  Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media and Games at Hochschule Trier.
+                  My studies have provided me with a solid foundation in programming and design, allowing me to explore the exciting intersection of technology and creativity.
+                </p>
+                <p>
+                  My journey into the world of technology began when I developed my first game as a hobby.
+                  This experience ignited my passion for creating engaging and interactive experiences.
+                  Currently, I am working with Vue and TypeScript, which allows me to create dynamic web applications while building on my JavaScript knowledge.
+                </p>
+                <p>
+                  I welcome any questions, collaboration ideas, or simply a chance to connect!
+                  I’m eager to share my journey and learn from others in the industry.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-container>
         </section>
-
-        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
 
         <section id="projects">
-          <h2>Projekte</h2>
+          <h2>Projects</h2>
           <div v-for="(project, index) in projects" :key="index" class="my-4">
             <!-- Toggle Button for each project -->
             <v-btn class="project-btn"
                    color="primary"
                    width="90%"
+                   height="10vh"
                    @click="project.isExpanded = !project.isExpanded">
               {{ project.title }} - {{ project.isExpanded ? 'Erweiterte Ansicht' : 'Kleinere Ansicht' }}
             </v-btn>
@@ -44,45 +56,31 @@
         </section>
 
         <section id="contact">
-          <h2>Get in Touch</h2>
-
           <v-container fluid>
-            <v-card class="mx-auto my-5" max-width="600">
+            <h2>Get in Touch</h2>
+            <v-card class="mx-auto my-5" width="90%">
               <v-card-text>
                 <p>
                   If you have any questions, feel free to reach out to me:
                 </p>
 
-                <!-- Contact Details List -->
                 <v-list dense>
                   <v-list-item>
-                    <v-list-item-icon>
                       <v-icon color="primary">mdi-email</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
                       <v-list-item-title>E-mail:</v-list-item-title>
                       <v-list-item-subtitle>datvuong@gmx.de</v-list-item-subtitle>
-                    </v-list-item-content>
                   </v-list-item>
 
                   <v-list-item>
-                    <v-list-item-icon>
                       <v-icon color="primary">mdi-phone</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
                       <v-list-item-title>Phone:</v-list-item-title>
-                      <v-list-item-subtitle>015787379794</v-list-item-subtitle>
-                    </v-list-item-content>
+                      <v-list-item-subtitle>01578/7379794</v-list-item-subtitle>
                   </v-list-item>
 
                   <v-list-item>
-                    <v-list-item-icon>
                       <v-icon color="primary">mdi-map-marker</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
                       <v-list-item-title>Based:</v-list-item-title>
                       <v-list-item-subtitle>Trier, Germany</v-list-item-subtitle>
-                    </v-list-item-content>
                   </v-list-item>
                 </v-list>
 
@@ -113,11 +111,6 @@ definePageMeta({
 </script>
 
 <style scoped>
-.testing {
-  padding-bottom: 300px;
-  padding-top: 300px;
-}
-
 .main-content {
   padding: 0;
 }
