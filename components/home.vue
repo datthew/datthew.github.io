@@ -12,7 +12,7 @@
           Computer Science Student | Digital Media Focus
         </p>
 
-        <div class="arrow-container">
+        <div :class="{ 'arrow-visible': isVisible }" class="arrow-container">
           <v-icon class="down-arrow" @click="scrollToMainpage">mdi-chevron-down</v-icon>
         </div>
       </div>
@@ -36,7 +36,7 @@ const isVisible = ref(false)
 onMounted(() => {
   setTimeout(() => {
     isVisible.value = true
-  }, 800)
+  }, 400)
 })
 </script>
 
@@ -46,12 +46,20 @@ onMounted(() => {
   position: absolute;
   bottom: 50px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-45%) scale(60%);
+  opacity: 0;
 }
 
 .down-arrow {
-  font-size: 4rem;
+  font-size: 6rem;
   color: #00dc82;
+}
+
+.arrow-visible {
+  opacity: 1;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  transition: all 0.5s ease-out;
 }
 
 .landing-section {

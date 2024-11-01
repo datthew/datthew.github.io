@@ -71,7 +71,8 @@ const hideSidebar = () => {
 .hover-box {
   width: 8vh;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #1a1a1a;
+  opacity: 0;
   position: fixed;
   left: 0;
   top: 0;
