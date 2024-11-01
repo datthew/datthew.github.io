@@ -22,7 +22,7 @@
             <!-- Toggle Button for each project -->
             <v-btn class="project-btn"
                    color="primary"
-                   width="100%"
+                   width="90%"
                    @click="project.isExpanded = !project.isExpanded">
               {{ project.title }} - {{ project.isExpanded ? 'Erweiterte Ansicht' : 'Kleinere Ansicht' }}
             </v-btn>
@@ -33,7 +33,7 @@
                       class="project-card mx-auto"
                       elevation="12"
                       height="550"
-                      width="100%"
+                      width="90%"
               >
                 <v-card-text>
                   {{ project.details }}
@@ -44,10 +44,56 @@
         </section>
 
         <section id="contact">
-          <h2>Contact</h2>
+          <h2>Get in Touch</h2>
+
+          <v-container fluid>
+            <v-card class="mx-auto my-5" max-width="600">
+              <v-card-text>
+                <p>
+                  If you have any questions, feel free to reach out to me:
+                </p>
+
+                <!-- Contact Details List -->
+                <v-list dense>
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon color="primary">mdi-email</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>E-mail:</v-list-item-title>
+                      <v-list-item-subtitle>datvuong@gmx.de</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon color="primary">mdi-phone</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>Phone:</v-list-item-title>
+                      <v-list-item-subtitle>015787379794</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon color="primary">mdi-map-marker</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>Based:</v-list-item-title>
+                      <v-list-item-subtitle>Trier, Germany</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+
+                <p>
+                  You can also reach me through my social media profiles—just check the links below.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-container>
         </section>
 
-        <v-btn class="testing" color="primary">Willkommen bei Vuetify</v-btn>
       </v-col>
     </v-row>
   </v-container>
