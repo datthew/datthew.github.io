@@ -3,7 +3,7 @@
   <Home/>
 
   <v-layout class="d-flex">
-
+    
     <Sidebar/>
 
     <v-layout class="d-flex flex-column flex-grow-1">
@@ -17,7 +17,7 @@
     </v-layout>
 
   </v-layout>
-  
+
 </template>
 
 <script lang="ts" setup>
