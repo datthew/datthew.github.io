@@ -61,8 +61,8 @@ const hideSidebar = () => {
 
 <style>
 .sidebar {
-  color: #00dc82;
-  background-color: green;
+  color: #222222;
+  background-color: #00dc82;
   min-height: 100vh;
   top: 0;
   z-index: 10;

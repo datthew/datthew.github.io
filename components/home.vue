@@ -12,9 +12,12 @@
           Computer Science Student | Digital Media Focus
         </p>
 
-        <div :class="{ 'arrow-visible': isVisible }" class="arrow-container">
-          <v-icon class="down-arrow" @click="scrollToMainpage">mdi-chevron-down</v-icon>
+        <div :class="{ 'arrow-visible': isArrowVisible }" class="arrow">
+          <v-icon class="down-arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
+            mdi-chevron-down
+          </v-icon>
         </div>
+
       </div>
     </section>
 
@@ -25,41 +28,58 @@
 
 
 <script lang="ts" setup>
-const scrollToMainpage = () => {
+const scrollToAbout = () => {
   const aboutSection = document.querySelector("#about")
   if (aboutSection) {
     aboutSection.scrollIntoView({behavior: "smooth"})
   }
 }
 const isVisible = ref(false)
-
+const isArrowVisible = ref(false)
 onMounted(() => {
   setTimeout(() => {
     isVisible.value = true
+    isArrowVisible.value = true
   }, 400)
 })
+
+const removeArrow = () => {
+  isArrowVisible.value = false
+}
 </script>
 
 
 <style scoped>
-.arrow-container {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-45%) scale(60%);
-  opacity: 0;
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
-.down-arrow {
-  font-size: 6rem;
-  color: #00dc82;
+.constant-bounce {
+  animation: bounce 1s infinite ease-in-out;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
 }
 
 .arrow-visible {
   opacity: 1;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  transition: all 0.5s ease-out;
+  transition: all 1s ease-in-out;
+}
+
+.down-arrow {
+  font-size: 4rem;
+  color: #00dc82;
 }
 
 .landing-section {
@@ -69,11 +89,7 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #1a1a1a; /* Dunkler Hintergrund */
-}
-
-.content-container {
-  text-align: center;
+  background-color: #1a1a1a;
 }
 
 .name {

@@ -35,7 +35,7 @@
           <div v-for="(project, index) in projects" :key="index" class="my-4">
             <!-- Toggle Button for each project -->
             <v-btn class="project-btn"
-                   color="primary"
+                   color="#00dc82"
                    height="10vh"
                    width="90%"
                    @click="project.isExpanded = !project.isExpanded">
@@ -69,19 +69,19 @@
 
                 <v-list dense>
                   <v-list-item>
-                    <v-icon color="primary">mdi-email</v-icon>
+                    <v-icon color="#00dc82">mdi-email</v-icon>
                     <v-list-item-title>E-mail:</v-list-item-title>
                     <v-list-item-subtitle>datvuong@gmx.de</v-list-item-subtitle>
                   </v-list-item>
 
                   <v-list-item>
-                    <v-icon color="primary">mdi-phone</v-icon>
+                    <v-icon color="#00dc82">mdi-phone</v-icon>
                     <v-list-item-title>Phone:</v-list-item-title>
                     <v-list-item-subtitle>01578/7379794</v-list-item-subtitle>
                   </v-list-item>
 
                   <v-list-item>
-                    <v-icon color="primary">mdi-map-marker</v-icon>
+                    <v-icon color="#00dc82">mdi-map-marker</v-icon>
                     <v-list-item-title>Based:</v-list-item-title>
                     <v-list-item-subtitle>Trier, Germany</v-list-item-subtitle>
                   </v-list-item>
@@ -116,6 +116,7 @@ definePageMeta({
 <style scoped>
 .main-content {
   padding: 0;
+  background-color: #666666;
 }
 
 .project-btn {
