@@ -1,8 +1,12 @@
 <template>
 
-  <v-card class="d-flex flex-column align-center justify-end" color="grey" height="100vh">
+  <v-card class="d-flex flex-column align-center justify-end" height="100vh">
+
 
     <section class="landing-section">
+
+      <div :class="{'block-animation-visible': isVisible}" class="block-animation"></div>
+
       <div class="content-container">
         <h1 :class="{ 'name-visible': isVisible }" class="name">
           <span class="first-name">Dat</span>
@@ -17,7 +21,6 @@
             mdi-chevron-down
           </v-icon>
         </div>
-
       </div>
     </section>
 
@@ -34,13 +37,18 @@ const scrollToAbout = () => {
     aboutSection.scrollIntoView({behavior: "smooth"})
   }
 }
+
 const isVisible = ref(false)
 const isArrowVisible = ref(false)
+
 onMounted(() => {
   setTimeout(() => {
     isVisible.value = true
-    isArrowVisible.value = true
   }, 400)
+
+  setTimeout(() => {
+    isArrowVisible.value = true
+  }, 1600)
 })
 
 const removeArrow = () => {
@@ -56,7 +64,7 @@ const removeArrow = () => {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-20px);
   }
 }
 
@@ -82,6 +90,39 @@ const removeArrow = () => {
   color: #00dc82;
 }
 
+@keyframes block-animation {
+  0% {
+    top: 0;
+    height: 0;
+    width: 1vh;
+  }
+  33% {
+    top: 0;
+    height: 100vh;
+    width: 1vh;
+  }
+  66% {
+    height: 100vh;
+    width: 100vh;
+  }
+  100% {
+    height: 40vh;
+  }
+}
+
+.block-animation {
+  width: 100vh;
+  position: absolute;
+  background-color: green;
+}
+
+.block-animation-visible {
+  height: 40vh;
+  top: 30vh;
+  animation: block-animation 1s ease-in-out;
+  transition: height 1s ease-in-out;
+}
+
 .landing-section {
   height: 100vh;
   width: 100%;
@@ -97,7 +138,7 @@ const removeArrow = () => {
   font-weight: 1000;
   margin: 0;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(500px);
 }
 
 .name-visible {
@@ -120,7 +161,7 @@ const removeArrow = () => {
   color: #888;
   margin-top: 1rem;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(500px);
 }
 
 .title-visible {

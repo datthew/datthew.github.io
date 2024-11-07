@@ -114,6 +114,7 @@ definePageMeta({
 </script>
 
 <style scoped>
+
 .main-content {
   padding: 0;
   background-color: #666666;
