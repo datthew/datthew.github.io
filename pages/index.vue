@@ -3,7 +3,7 @@
   <v-container class="main-content">
     <v-row justify="center">
       <v-col class="text-center" cols="12">
-        <v-app-bar class="divider-box"/>
+        <v-app-bar class="divider-box" elevation="6"/>
         <section id="about">
           <v-container fluid>
             <h1>About me</h1>

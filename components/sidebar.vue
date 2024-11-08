@@ -3,7 +3,7 @@
     <v-card class="hover-box" flat @mouseenter="showSidebar" @mouseleave="hideSidebar"></v-card>
   </div>
 
-  <v-navigation-drawer v-if="visible"
+  <v-navigation-drawer :class="{'sidebar-visible': visible}"
                        app
                        class="sidebar position-sticky"
                        permanent
@@ -22,40 +22,15 @@
 
 
 <script lang="ts" setup>
-// Initialisierung der Ref-Werte
-// const scrollY = ref<number>(0)
-// const visible = ref<boolean>(false)
-//
-// // Beobachter für `scrollY`, der den Sichtbarkeitsstatus aktualisiert
-// watch(scrollY, (newScrollY) => {
-//   visible.value = newScrollY > 800
-// })
-//
-// // Funktion zur Aktualisierung des `scrollY`-Wertes bei Scroll-Events
-// const updateScroll = () => {
-//   scrollY.value = window.scrollY
-// }
-//
-// // Event-Listener hinzufügen und entfernen
-// onMounted(() => {
-//   window.addEventListener('scroll', updateScroll)
-// })
-//
-// onUnmounted(() => {
-//   window.removeEventListener('scroll', updateScroll)
-// })
-
 const visible = ref<boolean>(false)
-let timer: ReturnType<typeof setTimeout>
 
 const showSidebar = () => {
-  clearTimeout(timer)
   visible.value = true
 }
 const hideSidebar = () => {
-  timer = setTimeout(() => {
+  setTimeout(() => {
     visible.value = false
-  }, 1000)
+  }, 1600)
 }
 </script>
 
@@ -64,13 +39,21 @@ const hideSidebar = () => {
   color: #222222;
   background-color: #00dc82;
   min-height: 100vh;
+  max-width: 4px;
   top: 0;
   z-index: 10;
+  transition: max-width 0.5s ease-in-out, box-shadow 1s ease-in-out;
+  box-shadow: 4px 0 40px 2px rgba(0, 0, 0, 1);
 }
 
+.sidebar-visible {
+  max-width: 100%;
+  transition: max-width 0.5s ease-in-out;
+  box-shadow: 4px 0 40px 2px rgba(0, 0, 0, 0);
+}
 
 .hover-box {
-  width: 8vh;
+  width: 10vh;
   height: 100vh;
   background-color: #1a1a1a;
   opacity: 0;
