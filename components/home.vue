@@ -5,14 +5,14 @@
 
     <section class="landing-section">
 
-      <div :class="{'block-animation-visible': isVisible}" class="block-animation"></div>
+      <div :class="{'block-animation-visible': isVisibleOne}" class="block-animation"></div>
 
       <div class="content-container">
-        <h1 :class="{ 'name-visible': isVisible }" class="name">
+        <h1 :class="{ 'name-visible': isVisibleTwo }" class="name">
           <span class="first-name">Dat</span>
           <span class="last-name">Vuong</span>
         </h1>
-        <p :class="{ 'title-visible': isVisible }" class="title">
+        <p :class="{ 'title-visible': isVisibleTwo }" class="title">
           Computer Science Student | Digital Media Focus
         </p>
 
@@ -38,17 +38,22 @@ const scrollToAbout = () => {
   }
 }
 
-const isVisible = ref(false)
+const isVisibleOne = ref(false)
+const isVisibleTwo = ref(false)
 const isArrowVisible = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
-    isVisible.value = true
+    isVisibleOne.value = true
   }, 400)
 
   setTimeout(() => {
-    isArrowVisible.value = true
+    isVisibleTwo.value = true
   }, 1600)
+
+  setTimeout(() => {
+    isArrowVisible.value = true
+  }, 3000)
 })
 
 const removeArrow = () => {
@@ -90,36 +95,30 @@ const removeArrow = () => {
   color: #00dc82;
 }
 
-@keyframes block-animation {
+@keyframes block-animated {
   0% {
-    top: 0;
     height: 0;
-    width: 1vh;
+    width: 0.2%;
   }
-  33% {
-    top: 0;
+  50% {
     height: 100vh;
-    width: 1vh;
-  }
-  66% {
-    height: 100vh;
-    width: 100vh;
+    width: 0.2%;
   }
   100% {
-    height: 40vh;
+
   }
 }
 
 .block-animation {
-  width: 100vh;
   position: absolute;
-  background-color: green;
+  background-color: #1a1a1a;
 }
 
 .block-animation-visible {
-  height: 40vh;
-  top: 30vh;
-  animation: block-animation 1s ease-in-out;
+  height: 100vh;
+  width: 70%;
+  top: 0;
+  animation: block-animated 1.2s ease-in-out;
   transition: height 1s ease-in-out;
 }
 
@@ -130,11 +129,11 @@ const removeArrow = () => {
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #1a1a1a;
+  background-color: #303030;
 }
 
 .name {
-  font-size: 8rem;
+  font-size: 12rem;
   font-weight: 1000;
   margin: 0;
   opacity: 0;
@@ -148,16 +147,16 @@ const removeArrow = () => {
 }
 
 .first-name {
-  color: #ffffff;
+  color: #00dc82;
 }
 
 .last-name {
-  color: #00dc82;
+  color: #ffffff;
   margin-left: 1rem;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 3rem;
   color: #888;
   margin-top: 1rem;
   opacity: 0;
@@ -170,13 +169,4 @@ const removeArrow = () => {
   transition: all 1s ease-out 0.3s;
 }
 
-@media (max-width: 768px) {
-  .name {
-    font-size: 3rem;
-  }
-
-  .title {
-    font-size: 1.2rem;
-  }
-}
 </style>

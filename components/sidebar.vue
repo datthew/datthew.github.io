@@ -68,6 +68,7 @@ const hideSidebar = () => {
   z-index: 10;
 }
 
+
 .hover-box {
   width: 8vh;
   height: 100vh;

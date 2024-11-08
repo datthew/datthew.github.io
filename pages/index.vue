@@ -3,10 +3,10 @@
   <v-container class="main-content">
     <v-row justify="center">
       <v-col class="text-center" cols="12">
-
+        <v-app-bar class="divider-box"/>
         <section id="about">
           <v-container fluid>
-            <h2>About me</h2>
+            <h1>About me</h1>
             <v-card class="mx-auto my-5" max-width="600">
               <v-card-text>
                 <p>
@@ -31,7 +31,7 @@
         </section>
 
         <section id="projects">
-          <h2>Projects</h2>
+          <h1>Projects</h1>
           <div v-for="(project, index) in projects" :key="index" class="my-4">
             <!-- Toggle Button for each project -->
             <v-btn class="project-btn"
@@ -60,7 +60,7 @@
 
         <section id="contact">
           <v-container fluid>
-            <h2>Get in Touch</h2>
+            <h1>Get in Touch</h1>
             <v-card class="mx-auto my-5" width="90%">
               <v-card-text>
                 <p>
@@ -114,6 +114,16 @@ definePageMeta({
 </script>
 
 <style scoped>
+
+h1 {
+  font-size: 3rem;
+  margin-top: 100px;
+}
+
+.divider-box {
+  height: 2vh;
+  background-color: #e2e2e2;
+}
 
 .main-content {
   padding: 0;
