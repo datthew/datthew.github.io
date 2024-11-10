@@ -1,26 +1,29 @@
 <template>
 
-  <v-card class="d-flex flex-column align-center justify-end" height="100vh">
+  <v-card height="100vh">
 
 
     <section class="landing-section">
 
-      <div :class="{'block-animation-visible': isVisibleOne}" class="block-animation"></div>
-
       <div class="content-container">
-        <h1 :class="{ 'name-visible': isVisibleTwo }" class="name">
-          <span class="first-name">Dat</span>
-          <span class="last-name">Vuong</span>
-        </h1>
-        <p :class="{ 'title-visible': isVisibleTwo }" class="title">
-          Computer Science Student | Digital Media Focus
-        </p>
 
-        <div :class="{ 'arrow-visible': isArrowVisible }" class="arrow">
-          <v-icon class="down-arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
+        <div class="text-container">
+          <h1 class="name">
+            <span class="line-one">&lt;h1&gt;Dat Vuong&lt;/h1&gt;</span> <br/>
+            <span class="line-two">&lt;h2&gt;Computer Sciene Student | Digital Media Focus&lt;/h2&gt;</span>
+          </h1>
+        </div>
+
+        <h1 class="name-done">
+          Dat Vuong
+        </h1>
+
+        <div :class="{ 'arrow-container-visible': isArrowVisible }" class="arrow-container">
+          <v-icon class="arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
             mdi-chevron-down
           </v-icon>
         </div>
+
       </div>
     </section>
 
@@ -38,46 +41,36 @@ const scrollToAbout = () => {
   }
 }
 
-const isVisibleOne = ref(false)
-const isVisibleTwo = ref(false)
 const isArrowVisible = ref(false)
 
 onMounted(() => {
-  setTimeout(() => {
-    isVisibleOne.value = true
-  }, 400)
-
-  setTimeout(() => {
-    isVisibleTwo.value = true
-  }, 1600)
-
   setTimeout(() => {
     isArrowVisible.value = true
   }, 3000)
 })
 
 const removeArrow = () => {
-  isArrowVisible.value = false
+  // isArrowVisible.value = false
 }
 </script>
 
 
 <style scoped>
 
-@keyframes bounce {
+@keyframes bounce-animation {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-25px);
   }
 }
 
 .constant-bounce {
-  animation: bounce 1s infinite ease-in-out;
+  animation: bounce-animation 1s infinite ease-in-out;
 }
 
-.arrow {
+.arrow-container {
   position: absolute;
   bottom: 8vh;
   left: 50%;
@@ -85,88 +78,80 @@ const removeArrow = () => {
   opacity: 0;
 }
 
-.arrow-visible {
+.arrow-container-visible {
   opacity: 1;
   transition: all 1s ease-in-out;
 }
 
-.down-arrow {
+.arrow {
   font-size: 4rem;
   color: #00dc82;
-}
-
-@keyframes block-animated {
-  0% {
-    height: 0;
-    width: 0.2%;
-  }
-  50% {
-    height: 100vh;
-    width: 0.2%;
-  }
-  100% {
-
-  }
-}
-
-.block-animation {
-  position: absolute;
-  background-color: #1a1a1a;
-}
-
-.block-animation-visible {
-  height: 100vh;
-  width: 70%;
-  top: 0;
-  animation: block-animated 1.2s ease-in-out;
-  transition: height 1s ease-in-out;
 }
 
 .landing-section {
   height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  align-content: center;
+
   background-color: #303030;
+
 }
 
-.name {
+.text-container {
+  display: inline-block;
+}
+
+.line-one, .line-two {
+  display: block;
+  font-size: 5rem;
+  font-family: monospace;
+  border-right: 10px solid;
+  letter-spacing: 10px;
+
+  width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.line-one {
+  animation: typing 1.2s steps(18), cursor-blinking .5s step-end infinite alternate;
+  animation-fill-mode: forwards;
+}
+
+.line-two {
+  animation: typing 2s steps(54), cursor-blinking .5s step-end infinite alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes cursor-blinking {
+  50% {
+    border-color: transparent
+  }
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+    opacity: 0;
+
+  }
+  1% {
+    opacity: 1; /* Make visible after delay */
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+
+.name-done {
   font-size: 12rem;
   font-weight: 1000;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(500px);
-}
-
-.name-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 1s ease-out;
-}
-
-.first-name {
   color: #00dc82;
-}
-
-.last-name {
-  color: #ffffff;
-  margin-left: 1rem;
-}
-
-.title {
-  font-size: 3rem;
-  color: #888;
-  margin-top: 1rem;
-  opacity: 0;
-  transform: translateY(500px);
-}
-
-.title-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 1s ease-out 0.3s;
 }
 
 </style>

@@ -7,8 +7,9 @@
                        app
                        class="sidebar position-sticky"
                        permanent
-                       @mouseenter="showSidebar"
-                       @mouseleave="hideSidebar">
+                       
+                       @mouseleave="hideSidebar"
+                       @mouseover="showSidebar">
     <v-list-item subtitle="Portfolio" title="Dat Vuong"></v-list-item>
     <v-divider></v-divider>
     <v-list density="compact" nav>
