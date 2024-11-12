@@ -1,22 +1,45 @@
 <template>
 
-  <v-card height="100vh">
-
+  <v-card height="100vh" style="border-radius: 0">
 
     <section class="landing-section">
 
       <div class="content-container">
 
         <div class="text-container">
-          <h1 class="name">
-            <span class="line-one">&lt;h1&gt;Dat Vuong&lt;/h1&gt;</span> <br/>
-            <span class="line-two">&lt;h2&gt;Computer Sciene Student | Digital Media Focus&lt;/h2&gt;</span>
-          </h1>
-        </div>
+          <h1 class="text-list">
+            <template v-if="!showFinalText">
+            <span class="line-one">
+              <span class="highlight-yellow">&lt;h1 </span>
+              <span class="highlight-white">class</span>
+              <span class="highlight-green">="name"</span>
+              <span class="highlight-yellow">&gt; </span>
+              <span class="highlight-white">Dat Vuong </span>
+            <span class="highlight-yellow">&lt;/h1&gt;</span>
+            </span>
+              <span class="line-two">
+              <span class="highlight-yellow">&lt;h2 </span>
+              <span class="highlight-white">class</span>
+              <span class="highlight-green">="title"</span>
+              <span class="highlight-yellow">&gt; </span>
+              <span class="highlight-white">Computer Science Student | Digital Media Focus </span>
+            <span class="highlight-yellow">&lt;/h2&gt;</span>
+            </span>
+            </template>
 
-        <h1 class="name-done">
-          Dat Vuong
-        </h1>
+            <template v-else>
+              <span class="name-done">Dat Vuong</span>
+              <span class="title-done">Computer Science Student | Digital Media Focus</span>
+            </template>
+          </h1>
+
+          <div :class="{ 'run-button-visible': isButtonVisible }" class="run-button-container">
+            <v-btn class="run-button" @click="toggleText">
+              {{ showFinalText ? 'RESTART' : 'RUN' }}
+              <v-icon>{{ showFinalText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
+            </v-btn>
+          </div>
+        </div>
 
         <div :class="{ 'arrow-container-visible': isArrowVisible }" class="arrow-container">
           <v-icon class="arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
@@ -26,7 +49,6 @@
 
       </div>
     </section>
-
 
   </v-card>
 
@@ -42,13 +64,22 @@ const scrollToAbout = () => {
 }
 
 const isArrowVisible = ref(false)
+const isButtonVisible = ref(false)
+const showFinalText = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
     isArrowVisible.value = true
-  }, 3000)
+  }, 5000)
+
+  setTimeout(() => {
+    isButtonVisible.value = true
+  }, 4500)
 })
 
+const toggleText = () => {
+  showFinalText.value = !showFinalText.value
+}
 const removeArrow = () => {
   // isArrowVisible.value = false
 }
@@ -72,7 +103,7 @@ const removeArrow = () => {
 
 .arrow-container {
   position: absolute;
-  bottom: 8vh;
+  bottom: 6vh;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -84,30 +115,32 @@ const removeArrow = () => {
 }
 
 .arrow {
-  font-size: 4rem;
+  font-size: 3rem;
   color: #00dc82;
 }
 
 .landing-section {
   height: 100vh;
   width: 100%;
-  position: relative;
-  align-content: center;
-
   background-color: #303030;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .text-container {
   display: inline-block;
+  color: #00dc82;
 }
 
 .line-one, .line-two {
   display: block;
-  font-size: 5rem;
+  font-size: 2rem;
   font-family: monospace;
-  border-right: 10px solid;
-  letter-spacing: 10px;
+  letter-spacing: 4px;
+  border-right: 4px solid;
 
   width: 0;
   opacity: 0;
@@ -116,14 +149,14 @@ const removeArrow = () => {
 }
 
 .line-one {
-  animation: typing 1.2s steps(18), cursor-blinking .5s step-end infinite alternate;
+  animation: typing 1.2s steps(33), remove-cursor 1.2s forwards;
   animation-fill-mode: forwards;
 }
 
 .line-two {
-  animation: typing 2s steps(54), cursor-blinking .5s step-end infinite alternate;
+  animation: typing 3.6s steps(70), cursor-blinking .5s step-end infinite alternate;
+  animation-delay: 1.2s, 4.8s;
   animation-fill-mode: forwards;
-  animation-delay: 1.2s;
 }
 
 @keyframes cursor-blinking {
@@ -132,26 +165,69 @@ const removeArrow = () => {
   }
 }
 
+@keyframes remove-cursor {
+  99% {
+    border-color: #00dc82;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
 @keyframes typing {
   0% {
     width: 0;
     opacity: 0;
-
   }
   1% {
-    opacity: 1; /* Make visible after delay */
+    opacity: 1;
   }
   100% {
-    opacity: 1;
     width: 100%;
+    opacity: 1;
   }
 }
 
+.highlight-green {
+  color: #50C878;
+}
+
+.highlight-white {
+  color: #e2e2e2;
+}
+
+.highlight-yellow {
+  color: #ffcc00;
+}
+
+.run-button-container {
+  position: absolute;
+  bottom: 24vh;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.run-button {
+  color: #50C878;
+  background-color: #303030;
+}
+
+.run-button-visible {
+  opacity: 1;
+  transition: all 1s ease-in-out;
+}
 
 .name-done {
-  font-size: 12rem;
+  display: block;
+  font-size: 10rem;
   font-weight: 1000;
   color: #00dc82;
 }
 
+.title-done {
+  font-size: 4rem;
+  font-weight: 1000;
+  color: #00dc82;
+}
 </style>
