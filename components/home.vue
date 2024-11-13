@@ -1,6 +1,6 @@
 <template>
 
-  <v-card height="100vh" style="border-radius: 0">
+  <v-card class="d-flex align-center" height="100vh" style="border-radius: 0">
 
     <section class="landing-section">
 
@@ -170,9 +170,16 @@ const removeArrow = () => {
 /* -------------------------------- Landing Section End -------------------------------- */
 /* -------------------------------- Text Start          -------------------------------- */
 
+.content-container {
+  background-color: #003f25;
+  display: flex;
+  justify-content: center;
+}
+
 .text-container {
   color: #00dc82;
   margin-left: 200px;
+  background-color: #222222;
 }
 
 .line-group {
