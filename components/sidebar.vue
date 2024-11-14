@@ -7,7 +7,7 @@
                        app
                        class="sidebar position-sticky"
                        permanent
-                       
+
                        @mouseleave="hideSidebar"
                        @mouseover="showSidebar">
     <v-list-item subtitle="Portfolio" title="Dat Vuong"></v-list-item>

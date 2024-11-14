@@ -2,7 +2,7 @@
 
   <v-container class="landing-section" fluid>
 
-    <v-row align="center" justify="center">
+    <v-row align="center" justify="center" style="overflow: hidden">
       <v-col cols="auto">
 
         <v-container class="content-container" fluid>
@@ -11,7 +11,7 @@
             <template v-if="!showCompiledText">
 
               <div class="line-group">
-                <div class="line-one-container">
+                <div class="line-container">
             <span class="line-one">
               <span class="highlight-yellow">&lt;h1 </span>
               <span class="highlight-white">class</span>
@@ -20,13 +20,13 @@
             </span>
                 </div>
 
-                <div class="line-two-container">
+                <div class="line-container">
             <span class="line-two">
               <span class="highlight-white">Dat Vuong</span>
             </span>
                 </div>
 
-                <div class="line-three-container">
+                <div class="line-container">
             <span class="line-three">
             <span class="highlight-yellow">&lt;/h1&gt;</span>
             </span>
@@ -34,7 +34,7 @@
               </div>
 
               <div class="line-group">
-                <div class="line-four-container">
+                <div class="line-container">
             <span class="line-four">
               <span class="highlight-yellow">&lt;h2 </span>
               <span class="highlight-white">class</span>
@@ -43,44 +43,57 @@
             </span>
                 </div>
 
-                <div class="line-five-container">
+                <div class="line-container">
             <span class="line-five">
               <span class="highlight-white">Computer Science Student | Digital Media Focus</span>
             </span>
                 </div>
 
-                <div class="line-six-container">
+                <div class="line-container">
             <span class="line-six">
             <span class="highlight-yellow">&lt;/h2&gt;</span>
             </span>
                 </div>
               </div>
 
-              <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
-                <v-btn class="compile-button" @click="toggleText">
-                  {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
-                  <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
-                </v-btn>
-              </div>
             </template>
 
             <template v-else>
-              <span class="name-done">DAT VUONG</span>
+              <!--              <span class="name-done">DAT VUONG</span>-->
 
-              <span class="title-done">Computer Science Student | Digital Media Focus</span>
-              <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
-                <v-btn class="compile-button" @click="toggleText">
-                  {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
-                  <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
-                </v-btn>
+              <!--              <span class="title-done">Computer Science Student | Digital Media Focus</span>-->
+              <!--              <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">-->
+              <!--                <v-btn class="compile-button" @click="toggleText">-->
+              <!--                  {{ showCompiledText ? 'RESTART' : 'COMPILE' }}-->
+              <!--                  <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>-->
+              <!--                </v-btn>-->
+              <!--              </div>-->
+
+              <div :class="{'block-animation-visible': isVisible}" class="block-animation"></div>
+
+              <div class="content-container">
+                <h1 :class="{ 'name-visible': isVisible }" class="name">
+                  <span class="first-name">Dat</span>
+                  <span class="last-name">Vuong</span>
+                </h1>
+                <p :class="{ 'title-visible': isVisible }" class="title">
+                  Computer Science Student | Digital Media Focus
+                </p>
               </div>
-
             </template>
           </v-card>
 
         </v-container>
       </v-col>
     </v-row>
+
+    <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
+      <v-btn class="compile-button" @click="toggleText">
+        {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
+        <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
+      </v-btn>
+    </div>
+
     <div :class="{ 'arrow-container-visible': isArrowVisible }" class="arrow-container">
       <v-icon class="arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
         mdi-chevron-down
@@ -93,11 +106,16 @@
 
 <script lang="ts" setup>
 
+const isVisible = ref(false)
 const isArrowVisible = ref(false)
 const isButtonVisible = ref(false)
 const showCompiledText = ref(false)
 
 onMounted(() => {
+  setTimeout(() => {
+    isVisible.value = true
+  }, 800)
+
   setTimeout(() => {
     isArrowVisible.value = true
   }, 3000)
@@ -143,7 +161,7 @@ const removeArrow = () => {
   text-align: left;
   background-color: #303030;
   width: 1500px;
-
+  max-width: 100vw;
   padding: 0;
 }
 
@@ -171,13 +189,7 @@ const removeArrow = () => {
   overflow: hidden;
 }
 
-
-.line-one-container,
-.line-two-container,
-.line-three-container,
-.line-four-container,
-.line-five-container,
-.line-six-container {
+.line-container {
   width: fit-content;
 }
 
@@ -259,8 +271,10 @@ const removeArrow = () => {
 
 /* ---------------- Compile Button Start ---------------- */
 .compile-button-container {
-  position: relative;
-  margin-top: 50px;
+  position: absolute;
+  bottom: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
   opacity: 0;
 }
 
@@ -276,24 +290,67 @@ const removeArrow = () => {
 
 /* ---------------- Compile Button End  ---------------- */
 /* ---------------- Compiled Text Start ---------------- */
-.name-done {
-  display: block;
-  font-size: 12rem;
-  font-weight: bold;
-  color: #00dc82;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-  text-align: center;
+@keyframes block-animated {
+  0% {
+    top: 0;
+    height: 0;
+    width: 1vh;
+  }
+  33% {
+    top: 0;
+    height: 100vh;
+    width: 0.2%;
+  }
+  66% {
+    50% {
+      height: 100vh;
+      width: 0.2%;
+    }
+
+    100% {
+      height: 40vh;
+    }
+  }
 }
 
-.title-done {
-  display: block;
+.block-animation {
+  background-color: #1a1a1a;
+  height: 100vh;
+  width: 70%;
+  top: 0;
+  animation: block-animated 1.2s ease-in-out;
+  transition: height 1s ease-in-out;
+}
+
+.name {
+  font-size: 8rem;
+  font-weight: 1000;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.first-name {
+  color: #ffffff;
+}
+
+.last-name {
+  color: #00dc82;
+  margin-left: 1rem;
+}
+
+.title {
   font-size: 2rem;
-  font-weight: 500;
-  color: #e2e2e2; /* Helles Grau für den Titel */
-  text-transform: none; /* Keine Großbuchstaben */
-  letter-spacing: 1px;
-  text-align: center;
+  color: #888;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.title-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s ease-out 0.3s;
 }
 
 
@@ -340,23 +397,13 @@ const removeArrow = () => {
 
   .line-group {
     flex-direction: column;
+    margin-left: 50px;
   }
 
   .line-two, .line-five {
     padding-left: 4ch;
   }
-
-  /*
-  .line-two-container {
-    width: 270px;
-  }
-
-  .line-five-container {
-    width: 1070px;
-  }
-  */
 }
-
 
 /*
 @media (max-width: 1100px) {
