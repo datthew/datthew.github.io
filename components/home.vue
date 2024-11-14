@@ -5,7 +5,7 @@
     <v-row align="center" justify="center">
       <v-col cols="auto">
 
-        <v-card class="content-container" flat>
+        <v-container class="content-container" fluid>
 
           <v-card class="text-container" flat>
             <template v-if="!showCompiledText">
@@ -74,11 +74,11 @@
                   <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
                 </v-btn>
               </div>
+
             </template>
           </v-card>
 
-
-        </v-card>
+        </v-container>
       </v-col>
     </v-row>
     <div :class="{ 'arrow-container-visible': isArrowVisible }" class="arrow-container">
@@ -140,14 +140,19 @@ const removeArrow = () => {
 
 .content-container {
   display: flex;
-  justify-content: center;
+  text-align: left;
   background-color: #303030;
+  width: 1500px;
+
+  padding: 0;
 }
 
 .text-container {
-  width: 100%;
   color: #00dc82;
-  background-color: green;
+  background-color: #303030;
+  display: block;
+  width: 100%;
+  align-content: center;
 }
 
 .line-group {
@@ -166,28 +171,14 @@ const removeArrow = () => {
   overflow: hidden;
 }
 
-.line-one-container {
-  width: 370px;
-}
 
-.line-two-container {
-  width: 200px;
-}
-
-.line-three-container, .line-six-container {
-  width: 115px;
-}
-
-.line-four-container {
-  width: 390px;
-}
-
-.line-five-container {
-  width: 1000px;
-}
-
-.line-two, .line-four {
-  padding-left: 0;
+.line-one-container,
+.line-two-container,
+.line-three-container,
+.line-four-container,
+.line-five-container,
+.line-six-container {
+  width: fit-content;
 }
 
 .line-one {
@@ -344,16 +335,18 @@ const removeArrow = () => {
 
 /* -------------------------------- Responsive Design -------------------------------- */
 
-/*
+
 @media (max-width: 1600px) {
+
   .line-group {
-    display: block;
+    flex-direction: column;
   }
 
   .line-two, .line-five {
     padding-left: 4ch;
   }
 
+  /*
   .line-two-container {
     width: 270px;
   }
@@ -361,8 +354,9 @@ const removeArrow = () => {
   .line-five-container {
     width: 1070px;
   }
+  */
 }
-*/
+
 
 /*
 @media (max-width: 1100px) {
