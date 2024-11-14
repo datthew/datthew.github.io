@@ -1,92 +1,92 @@
 <template>
 
-  <v-card class="d-flex align-center" height="100vh" style="border-radius: 0">
+  <v-container class="landing-section" fluid>
 
-    <section class="landing-section">
+    <v-row align="center" justify="center">
+      <v-col cols="auto">
 
-      <div class="content-container">
+        <v-card class="content-container" flat>
 
-        <div class="text-container">
-          <template v-if="!showCompiledText">
+          <v-card class="text-container" flat>
+            <template v-if="!showCompiledText">
 
-            <div class="line-group">
-              <div class="line-one-container">
+              <div class="line-group">
+                <div class="line-one-container">
             <span class="line-one">
               <span class="highlight-yellow">&lt;h1 </span>
               <span class="highlight-white">class</span>
               <span class="highlight-green">="name"</span>
               <span class="highlight-yellow">&gt; </span>
             </span>
-              </div>
+                </div>
 
-              <div class="line-two-container">
+                <div class="line-two-container">
             <span class="line-two">
               <span class="highlight-white">Dat Vuong</span>
             </span>
-              </div>
+                </div>
 
-              <div class="line-three-container">
+                <div class="line-three-container">
             <span class="line-three">
             <span class="highlight-yellow">&lt;/h1&gt;</span>
             </span>
+                </div>
               </div>
-            </div>
 
-            <div class="line-group">
-              <div class="line-four-container">
+              <div class="line-group">
+                <div class="line-four-container">
             <span class="line-four">
               <span class="highlight-yellow">&lt;h2 </span>
               <span class="highlight-white">class</span>
               <span class="highlight-green">="title"</span>
               <span class="highlight-yellow">&gt; </span>
             </span>
-              </div>
+                </div>
 
-              <div class="line-five-container">
+                <div class="line-five-container">
             <span class="line-five">
               <span class="highlight-white">Computer Science Student | Digital Media Focus</span>
             </span>
-              </div>
+                </div>
 
-              <div class="line-six-container">
+                <div class="line-six-container">
             <span class="line-six">
             <span class="highlight-yellow">&lt;/h2&gt;</span>
             </span>
+                </div>
               </div>
-            </div>
 
-            <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
-              <v-btn class="compile-button" @click="toggleText">
-                {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
-                <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
-              </v-btn>
-            </div>
-          </template>
+              <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
+                <v-btn class="compile-button" @click="toggleText">
+                  {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
+                  <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
+                </v-btn>
+              </div>
+            </template>
 
-          <template v-else>
-            <span class="name-done">Dat Vuong</span>
+            <template v-else>
+              <span class="name-done">DAT VUONG</span>
 
-            <span class="title-done">Computer Science Student | Digital Media Focus</span>
-            <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
-              <v-btn class="compile-button" @click="toggleText">
-                {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
-                <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
-              </v-btn>
-            </div>
-          </template>
-        </div>
+              <span class="title-done">Computer Science Student | Digital Media Focus</span>
+              <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
+                <v-btn class="compile-button" @click="toggleText">
+                  {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
+                  <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
+                </v-btn>
+              </div>
+            </template>
+          </v-card>
 
 
-        <div :class="{ 'arrow-container-visible': isArrowVisible }" class="arrow-container">
-          <v-icon class="arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
-            mdi-chevron-down
-          </v-icon>
-        </div>
-
-      </div>
-    </section>
-
-  </v-card>
+        </v-card>
+      </v-col>
+    </v-row>
+    <div :class="{ 'arrow-container-visible': isArrowVisible }" class="arrow-container">
+      <v-icon class="arrow constant-bounce" @click="() => { scrollToAbout(); removeArrow(); }">
+        mdi-chevron-down
+      </v-icon>
+    </div>
+  </v-container>
 
 </template>
 
@@ -124,39 +124,7 @@ const removeArrow = () => {
 
 <style scoped>
 
-/* -------------------------------- Arrow Start             -------------------------------- */
-.arrow-container {
-  position: absolute;
-  bottom: 6vh;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-}
 
-.arrow-container-visible {
-  opacity: 1;
-  transition: all 1s ease-in-out;
-}
-
-.arrow {
-  font-size: 3rem;
-  color: #00dc82;
-}
-
-@keyframes bounce-animation {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-25px);
-  }
-}
-
-.constant-bounce {
-  animation: bounce-animation 1s infinite ease-in-out;
-}
-
-/* -------------------------------- Arrow End             -------------------------------- */
 /* -------------------------------- Landing Section Start -------------------------------- */
 .landing-section {
   height: 100vh;
@@ -171,15 +139,15 @@ const removeArrow = () => {
 /* -------------------------------- Text Start          -------------------------------- */
 
 .content-container {
-  background-color: #003f25;
   display: flex;
   justify-content: center;
+  background-color: #303030;
 }
 
 .text-container {
+  width: 100%;
   color: #00dc82;
-  margin-left: 200px;
-  background-color: #222222;
+  background-color: green;
 }
 
 .line-group {
@@ -301,7 +269,7 @@ const removeArrow = () => {
 /* ---------------- Compile Button Start ---------------- */
 .compile-button-container {
   position: relative;
-  margin-top: 30px;
+  margin-top: 50px;
   opacity: 0;
 }
 
@@ -318,35 +286,72 @@ const removeArrow = () => {
 /* ---------------- Compile Button End  ---------------- */
 /* ---------------- Compiled Text Start ---------------- */
 .name-done {
-  font-size: 4rem; /* Große Schrift für den Namen */
+  display: block;
+  font-size: 12rem;
   font-weight: bold;
-  color: #00dc82; /* Grüner Akzent */
+  color: #00dc82;
   margin-bottom: 20px;
-  text-transform: uppercase; /* Alle Buchstaben in Großbuchstaben */
-  letter-spacing: 2px; /* Abstand zwischen den Buchstaben */
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .title-done {
-  font-size: 2rem; /* Etwas kleinere Schrift für den Titel */
+  display: block;
+  font-size: 2rem;
   font-weight: 500;
   color: #e2e2e2; /* Helles Grau für den Titel */
   text-transform: none; /* Keine Großbuchstaben */
   letter-spacing: 1px;
+  text-align: center;
 }
 
 
 /* ---------------- Compiled Text End  ---------------- */
 /* -------------------------------- Text End -------------------------------- */
+/* -------------------------------- Arrow Start             -------------------------------- */
+.arrow-container {
+  position: absolute;
+  bottom: 6vh;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.arrow-container-visible {
+  opacity: 1;
+  transition: all 1s ease-in-out;
+}
+
+.arrow {
+  font-size: 3rem;
+  color: #00dc82;
+}
+
+@keyframes bounce-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+.constant-bounce {
+  animation: bounce-animation 1s infinite ease-in-out;
+}
+
+/* -------------------------------- Arrow End             -------------------------------- */
 
 /* -------------------------------- Responsive Design -------------------------------- */
 
+/*
 @media (max-width: 1600px) {
   .line-group {
     display: block;
   }
 
   .line-two, .line-five {
-    padding-left: 4ch; /* Indent nur bei kleinen Bildschirmen */
+    padding-left: 4ch;
   }
 
   .line-two-container {
@@ -357,6 +362,7 @@ const removeArrow = () => {
     width: 1070px;
   }
 }
+*/
 
 /*
 @media (max-width: 1100px) {
