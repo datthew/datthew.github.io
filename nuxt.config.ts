@@ -3,7 +3,7 @@ import vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
     app: {
-        baseURL: '/',
+        baseURL: '/portfolio/',
         buildAssetsDir: '/_nuxt/',
     },
     components: true,
