@@ -59,28 +59,20 @@
             </template>
 
             <template v-else>
-              <!--              <span class="name-done">DAT VUONG</span>-->
 
-              <!--              <span class="title-done">Computer Science Student | Digital Media Focus</span>-->
-              <!--              <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">-->
-              <!--                <v-btn class="compile-button" @click="toggleText">-->
-              <!--                  {{ showCompiledText ? 'RESTART' : 'COMPILE' }}-->
-              <!--                  <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>-->
-              <!--                </v-btn>-->
-              <!--              </div>-->
-
-              <div :class="{'block-animation-visible': isVisible}" class="block-animation"></div>
-
-              <div class="content-container">
-                <h1 :class="{ 'name-visible': isVisible }" class="name">
+              <v-card class="curtain" flat>
+                <h1 class="name">
                   <span class="first-name">Dat</span>
                   <span class="last-name">Vuong</span>
                 </h1>
-                <p :class="{ 'title-visible': isVisible }" class="title">
+                <h1 class="title">
                   Computer Science Student | Digital Media Focus
-                </p>
-              </div>
+                </h1>
+              </v-card>
+
+
             </template>
+
           </v-card>
 
         </v-container>
@@ -88,7 +80,8 @@
     </v-row>
 
     <div :class="{ 'compile-button-visible': isButtonVisible }" class="compile-button-container">
-      <v-btn class="compile-button" @click="toggleText">
+      <v-btn :style="{ backgroundColor: showCompiledText ? '#1A2121' : '#2C3333' }" class="compile-button"
+             @click="toggleText">
         {{ showCompiledText ? 'RESTART' : 'COMPILE' }}
         <v-icon>{{ showCompiledText ? 'mdi-restart' : 'mdi-play-outline' }}</v-icon>
       </v-btn>
@@ -147,7 +140,7 @@ const removeArrow = () => {
 .landing-section {
   height: 100vh;
   width: 100%;
-  background-color: #303030;
+  background-color: #2C3333;
 
   display: flex;
   align-items: center;
@@ -159,7 +152,7 @@ const removeArrow = () => {
 .content-container {
   display: flex;
   text-align: left;
-  background-color: #303030;
+  background-color: #2C3333;
   width: 1500px;
   max-width: 100vw;
   padding: 0;
@@ -167,7 +160,7 @@ const removeArrow = () => {
 
 .text-container {
   color: #00dc82;
-  background-color: #303030;
+  background-color: #2C3333;
   display: block;
   width: 100%;
   align-content: center;
@@ -276,11 +269,18 @@ const removeArrow = () => {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
+
 }
 
 .compile-button {
-  color: #50C878;
-  background-color: #303030;
+  color: #00bda4;
+  background-color: #2C3333;
+  border-radius: 10px;
+}
+
+.compile-button:hover {
+  color: #00bda4;
+  border: #00bda4 2px solid;
 }
 
 .compile-button-visible {
@@ -290,69 +290,71 @@ const removeArrow = () => {
 
 /* ---------------- Compile Button End  ---------------- */
 /* ---------------- Compiled Text Start ---------------- */
-@keyframes block-animated {
-  0% {
-    top: 0;
-    height: 0;
-    width: 1vh;
-  }
-  33% {
-    top: 0;
-    height: 100vh;
-    width: 0.2%;
-  }
-  66% {
-    50% {
-      height: 100vh;
-      width: 0.2%;
-    }
 
-    100% {
-      height: 40vh;
-    }
-  }
+.curtain {
+  background-color: #1A2121;
+  justify-self: center;
+  text-align: center;
+  align-content: center;
+  animation: open-curtain 0.8s ease-in;
+  animation-fill-mode: forwards;
+  position: relative;
+  z-index: 10;
 }
 
-.block-animation {
-  background-color: #1a1a1a;
-  height: 100vh;
-  width: 70%;
-  top: 0;
-  animation: block-animated 1.2s ease-in-out;
-  transition: height 1s ease-in-out;
+@keyframes open-curtain {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 100vh;
+    width: 1px;
+  }
+  100% {
+    width: 1600px;
+    height: 100vh;
+  }
 }
 
 .name {
-  font-size: 8rem;
+  font-size: 14rem;
   font-weight: 1000;
-  margin: 0;
   opacity: 0;
-  transform: translateY(20px);
+  animation: show-name 1s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
 
 .first-name {
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
 .last-name {
-  color: #00dc82;
+  color: #00f7da;
   margin-left: 1rem;
 }
 
 .title {
-  font-size: 2rem;
-  color: #888;
-  margin-top: 1rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #f5f5f5;
   opacity: 0;
-  transform: translateY(20px);
+
+  animation: show-name 1s ease-in-out;
+  animation-delay: 1.6s;
+  animation-fill-mode: forwards;
 }
 
-.title-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 1s ease-out 0.3s;
+@keyframes show-name {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 
 /* ---------------- Compiled Text End  ---------------- */
 /* -------------------------------- Text End -------------------------------- */
@@ -372,7 +374,7 @@ const removeArrow = () => {
 
 .arrow {
   font-size: 3rem;
-  color: #00dc82;
+  color: #00bda4;
 }
 
 @keyframes bounce-animation {

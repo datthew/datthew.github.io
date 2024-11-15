@@ -7,7 +7,7 @@
     <Sidebar/>
     <v-layout class="d-flex flex-column flex-grow-1">
 
-      <v-main style="background-color: #666666">
+      <v-main style="background-color: #2C3333 ">
         <NuxtPage/>
       </v-main>
 

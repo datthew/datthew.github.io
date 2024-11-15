@@ -8,6 +8,7 @@
                        class="sidebar position-sticky"
                        permanent
 
+                       @mouseenter="showSidebar"
                        @mouseleave="hideSidebar"
                        @mouseover="showSidebar">
     <v-list-item subtitle="Portfolio" title="Dat Vuong"></v-list-item>
@@ -37,8 +38,9 @@ const hideSidebar = () => {
 
 <style>
 .sidebar {
-  color: #222222;
-  background-color: #00dc82;
+  color: #303030;
+  background-color: #b4aa99;
+  border: #00bda4 2px solid;
   min-height: 100vh;
   max-width: 4px;
   top: 0;
