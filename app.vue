@@ -1,18 +1,17 @@
 <template>
-  <NuxtLayout>
+<!--  <NuxtLayout>-->
+
+<!--    <v-app>-->
+
+<!--     -->
+
+<!--    </v-app>-->
+
+<!--  </NuxtLayout>-->
 
     <v-app>
-
-      <!--      <Sidebar/>-->
-
-      <!--      <v-main>-->
-      <!--      <NuxtPage/>-->
-      <!--        <Footer/>-->
-      <!--      </v-main>-->
-
+      <NuxtLayout />
     </v-app>
-
-  </NuxtLayout>
 
 </template>
 
