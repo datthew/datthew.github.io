@@ -7,7 +7,8 @@
         <section id="about">
           <v-container fluid>
             <h1>About me</h1>
-            <v-card class="mx-auto my-5 text-color card-border" max-width="800" style="background-color: #2C3333">
+            <v-card class="mx-auto my-5 text-color card-border" max-width="1000" style="background-color: #2C3333"
+                    width="90%">
               <v-card-text style="font-size: 1.4rem">
                 <p>
                   Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media and Games at Hochschule
@@ -38,6 +39,7 @@
                 class="project-btn text-color"
                 color="#303030"
                 height="10vh"
+                max-width="1000px"
                 style="border-radius:10px;border: #b4aa99 2px solid"
                 width="90%"
                 @click="project.isExpanded = !project.isExpanded">
@@ -51,8 +53,8 @@
                       color="#4d4637"
                       elevation="12"
                       height="550"
+                      max-width="1000px"
                       style="border-radius: 10px; border-left: #b4aa99 2px solid; border-right: #b4aa99 2px solid; border-bottom: #b4aa99 2px solid"
-
                       width="90%"
               >
                 <v-card-text>
@@ -66,7 +68,8 @@
         <section id="contact">
           <v-container fluid>
             <h1>Get in Touch</h1>
-            <v-card class="mx-auto my-5 text-color card-border" style="background-color: #2C3333" width="90%">
+            <v-card class="mx-auto my-5 text-color card-border" max-width="1000" style="background-color: #2C3333"
+                    width="90%">
               <v-card-text class="text-color">
                 <p>
                   If you have any questions, feel free to reach out to me:
@@ -126,13 +129,14 @@ h1 {
 }
 
 .divider-box {
-  height: 2vh;
+  height: 10px;
   background-color: #b4aa99;
 }
 
 .main-content {
   padding: 0;
-  background-color: #2C3333;
+  background-color: #1A2121;
+  max-width: 1500px;
 }
 
 .project-btn {

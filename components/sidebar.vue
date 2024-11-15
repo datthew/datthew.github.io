@@ -9,8 +9,7 @@
                        permanent
 
                        @mouseenter="showSidebar"
-                       @mouseleave="hideSidebar"
-                       @mouseover="showSidebar">
+                       @mouseleave="hideSidebar">
     <v-list-item subtitle="Portfolio" title="Dat Vuong"></v-list-item>
     <v-divider></v-divider>
     <v-list density="compact" nav>
@@ -39,8 +38,8 @@ const hideSidebar = () => {
 <style>
 .sidebar {
   color: #303030;
-  background-color: #b4aa99;
-  border: #00bda4 2px solid;
+  background-color: #00bda4;
+  border: #b4aa99 4px solid;
   min-height: 100vh;
   max-width: 4px;
   top: 0;
@@ -53,6 +52,7 @@ const hideSidebar = () => {
   max-width: 100%;
   transition: max-width 0.5s ease-in-out;
   box-shadow: 4px 0 40px 2px rgba(0, 0, 0, 0);
+  font-size: 3rem;
 }
 
 .hover-box {
