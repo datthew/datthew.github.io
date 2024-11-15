@@ -2,9 +2,15 @@ import {defineNuxtConfig} from 'nuxt/config'
 import vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
-    app: {
-        baseURL: '/',
+    ssr: true,
+    // app: {
+    //     baseURL: '/',
+    // },
+
+    nitro: {
+        preset: 'github_pages'
     },
+
     components: true,
     //...
     build: {
@@ -25,5 +31,15 @@ export default defineNuxtConfig({
                 transformAssetUrls,
             },
         },
+
+        build: {
+            chunkSizeWarningLimit: 1000,
+        },
+    },
+
+    // Hilft bei der Fehlerbehebung während des Builds
+    typescript: {
+        strict: true,
+        typeCheck: true,
     },
 })
