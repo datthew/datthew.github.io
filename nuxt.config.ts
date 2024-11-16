@@ -3,9 +3,9 @@ import vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
     ssr: true,
-    // app: {
-    //     baseURL: '/',
-    // },
+    app: {
+        baseURL: '/',
+    },
 
     nitro: {
         preset: 'github_pages'
