@@ -19,6 +19,6 @@
   "devDependencies": {
     "gh-pages": "^6.2.0",
     "vite-plugin-vuetify": "^2.0.4",
-    "vuetify": "^3.7.2"
+    "vuetify": "^3.7.4"
   }
 }
