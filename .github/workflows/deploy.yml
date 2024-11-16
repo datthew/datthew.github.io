@@ -1,35 +1,31 @@
+# .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
-
 on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - main  # or 'master' if that’s your default branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Enable Corepack
+      - name: Enable corepack
         run: corepack enable
 
-      - name: Install Dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Install Vuetify (if not in package.json)
-        run: npm install vuetify@latest
-
-      - name: Build
+      - name: Build Nuxt project
         run: npx nuxt build --preset github_pages
-        env:
-          NITRO_PRESET: github_pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -38,14 +34,11 @@ jobs:
 
   deploy:
     needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github_pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          branch: gh-pages  # this is where the static files will be pushed
+          folder: ./.output/public
