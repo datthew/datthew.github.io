@@ -1,32 +1,43 @@
 name: Deploy to GitHub Pages
-
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main  # oder master, je nachdem welchen Branch-Namen du verwendest
+      - master # oder 'master', je nachdem welchen Branch du verwendest
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "20"
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Build
-        run: |
-          export NUXT_APP_BASE_URL="/"
-          npx nuxt build --preset github_pages
+        env:
+          NUXT_APP_BASE_URL: "/"
+        run: npx nuxt build --preset github_pages
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .output/public
-          force_orphan: true
+          path: ./.output/public
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github_pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
