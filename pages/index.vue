@@ -36,14 +36,14 @@
           <div v-for="(project, index) in projects" :key="index" class="my-4">
             <!-- Toggle Button for each project -->
             <v-btn
-                class="project-btn text-color"
-                color="#2C3333"
-                height="10vh"
+                :class="['project-btn text-color', {'project-dummy-game': project.title === 'Dummy Game'}]"
+                color="#303030"
+                height="16vh"
                 max-width="1000px"
                 style="border-radius:10px;border: #b4aa99 2px solid"
                 width="90%"
                 @click="project.isExpanded = !project.isExpanded">
-              {{ project.title }} - {{ project.isExpanded ? 'Erweiterte Ansicht' : 'Kleinere Ansicht' }}
+              {{ project.title }}
             </v-btn>
 
             <!-- Card, only visible when project.isExpanded is true -->
@@ -52,14 +52,74 @@
                       class="project-card mx-auto text-color"
                       color="#4d4637"
                       elevation="12"
-                      height="550"
                       max-width="1000px"
                       style="border-radius: 10px; border-left: #b4aa99 2px solid; border-right: #b4aa99 2px solid; border-bottom: #b4aa99 2px solid"
                       width="90%"
               >
-                <v-card-text>
-                  {{ project.details }}
-                </v-card-text>
+                <v-container>
+                  <v-row>
+                    <!-- Linke Spalte für Beschreibung -->
+                    <v-col cols="12" md="6">
+                      <v-card-text class="text-color">
+                        <h3 class="text-h5 mb-4">{{ project.title }}</h3>
+                        <p>{{ project.details }}</p>
+
+                        <!-- Technologien/Tags -->
+                        <div class="mt-4">
+                          <v-chip
+                              v-for="(tech, i) in project.technologies"
+                              :key="i"
+                              class="mr-2 mb-2"
+                              color="#00bda4"
+                              text-color="white"
+                          >
+                            {{ tech }}
+                          </v-chip>
+                        </div>
+                      </v-card-text>
+                    </v-col>
+
+                    <!-- Rechte Spalte für Medien -->
+                    <v-col cols="12" md="6">
+                      <!-- Bilder Carousel -->
+                      <v-carousel
+                          v-if="project.images && project.images.length"
+                          height="300"
+                          hide-delimiters
+                          show-arrows="hover"
+                      >
+                        <v-carousel-item
+                            v-for="(image, i) in project.images"
+                            :key="i"
+                        >
+                          <v-img
+                              :src="image.src"
+                              :alt="image.caption"
+                              cover
+                              height="300"
+                          >
+                            <div class="image-caption text-subtitle-1">
+                              {{ image.caption }}
+                            </div>
+                          </v-img>
+                        </v-carousel-item>
+                      </v-carousel>
+
+                      <!-- Video Section -->
+                      <div v-if="project.video" class="mt-4">
+                        <video
+                            controls
+                            width="100%"
+                            height="auto"
+                            class="project-video"
+                        >
+                          <source :src="project.video" type="video/mp4">
+                          Ihr Browser unterstützt das Videoformat nicht.
+                        </video>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </v-container>
               </v-card>
             </v-expand-transition>
           </div>
@@ -110,10 +170,38 @@
 
 <script lang="ts" setup>
 
+const dummyGame = new URL('@/assets/dummy-game-ingame.png', import.meta.url).href
+
 const projects = ref([
-  {title: 'Projekt 122', details: 'Erweiterte Informationen über Projekt 1213', isExpanded: false},
-  {title: 'Projekt 2', details: 'Erweiterte Informationen über Projekt 2', isExpanded: false},
-  {title: 'Projekt 3', details: 'Erweiterte Informationen über Projekt 3', isExpanded: false},
+  {
+    title: 'Dummy Game',
+    details: 'Dummy Game is a small online PvP game where players compete to shoot or headbutt their enemies off platforms in order to win. The game features simple, fast-paced gameplay with a focus on fun and strategy as players try to outmaneuver each other and claim victory.',
+    isExpanded: false,
+    technologies: ['Unity', 'C#'],
+    images: [
+      {
+        src: dummyGame,
+        caption: 'Screenshot des Spiels'
+      }
+    ],
+    video: null
+  },
+  {
+    title: 'Projekt 2',
+    details: 'Erweiterte Informationen über Projekt 2',
+    isExpanded: false,
+    technologies: ['Vue.js', 'TypeScript', 'Unity'],
+    images: [],
+    video: null
+  },
+  {
+    title: 'Projekt 3',
+    details: 'Erweiterte Informationen über Projekt 3',
+    isExpanded: false,
+    technologies: ['Vue.js', 'TypeScript', 'Unity'],
+    images: [],
+    video: null
+  },
 ])
 
 definePageMeta({
@@ -129,7 +217,7 @@ h1 {
 }
 
 .divider-box {
-  height: 4px;
+  height: 2px;
   background-color: #b4aa99;
 }
 
@@ -141,6 +229,41 @@ h1 {
 
 .project-btn {
   margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+.project-dummy-game {
+  background-image: url('@/assets/dummy-game.JPG') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.project-video {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Ensure images in carousel maintain aspect ratio */
+.v-carousel {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.v-chip {
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .project-card {
