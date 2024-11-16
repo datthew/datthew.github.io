@@ -169,9 +169,6 @@
 </template>
 
 <script lang="ts" setup>
-
-const dummyGame = new URL('@/assets/dummy-game-ingame.png', import.meta.url).href
-
 const projects = ref([
   {
     title: 'Dummy Game',
@@ -180,7 +177,7 @@ const projects = ref([
     technologies: ['Unity', 'C#'],
     images: [
       {
-        src: dummyGame,
+        src: 'dummy-game-ingame.png',
         caption: 'Screenshot des Spiels'
       }
     ],
@@ -233,7 +230,7 @@ h1 {
 }
 
 .project-dummy-game {
-  background-image: url('@/assets/dummy-game.JPG') !important;
+  background-image: url('/dummy-game.JPG') !important;
   background-size: cover !important;
   background-position: center !important;
 }
