@@ -98,7 +98,7 @@ const hideSidebar = () => {
 
 .subtitle-text {
   font-size: 1rem;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .nav-text {
