@@ -71,9 +71,11 @@ const hideSidebar = () => {
 .sidebar {
   color: #303030;
   background-color: #00bda4;
-  border: #b4aa99 4px solid;
+  border-right: #b4aa99 4px solid;
+  border-top: #b4aa99 4px solid;
+
   min-height: 100vh;
-  max-width: 4px;
+  max-width: 0;
   top: 0;
   z-index: 10;
   transition: max-width 0.5s ease-in-out, box-shadow 1s ease-in-out;
@@ -103,7 +105,7 @@ const hideSidebar = () => {
 
 .nav-text {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .custom-list-item {
@@ -113,11 +115,10 @@ const hideSidebar = () => {
   transition: background-color 0.3s ease;
 }
 
-
 .hover-box {
   width: 10vh;
   height: 100vh;
-  background-color: #1a1a1a;
+  background-color: #2C3333;
   opacity: 0;
   position: fixed;
   left: 0;

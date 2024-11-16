@@ -4,14 +4,13 @@
     <v-app>
 
 
-
     </v-app>
 
   </NuxtLayout>
 
-<!--    <v-app>-->
-<!--      <NuxtLayout />-->
-<!--    </v-app>-->
+  <!--    <v-app>-->
+  <!--      <NuxtLayout />-->
+  <!--    </v-app>-->
 
 </template>
 
