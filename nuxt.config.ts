@@ -3,21 +3,14 @@ import vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
     ssr: true,
-    app: {
-        baseURL: '/', // für datthew.github.io
-        buildAssetsDir: '/_nuxt/' // Wichtig für korrekte Asset-Pfade
-    },
+    // app: {
+    //     baseURL: '/',
+    // },
+
     nitro: {
         preset: 'github_pages'
     },
-
-    // components: true,
-    components: {
-        dirs: [
-            '~/components',
-            '~/layouts'
-        ]
-    },
+    components: true,
     //...
     build: {
         transpile: ['vuetify'],
@@ -37,5 +30,5 @@ export default defineNuxtConfig({
                 transformAssetUrls,
             },
         },
-    }
+    },
 })
