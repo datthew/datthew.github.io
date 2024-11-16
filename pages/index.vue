@@ -37,7 +37,7 @@
             <!-- Toggle Button for each project -->
             <v-btn
                 class="project-btn text-color"
-                color="#303030"
+                color="#2C3333"
                 height="10vh"
                 max-width="1000px"
                 style="border-radius:10px;border: #b4aa99 2px solid"
@@ -129,7 +129,7 @@ h1 {
 }
 
 .divider-box {
-  height: 10px;
+  height: 4px;
   background-color: #b4aa99;
 }
 

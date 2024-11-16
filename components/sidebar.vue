@@ -10,28 +10,60 @@
 
                        @mouseenter="showSidebar"
                        @mouseleave="hideSidebar">
-    <v-list-item subtitle="Portfolio" title="Dat Vuong"></v-list-item>
+
+    <div class="sidebar-header">
+      <div class="title-text">Dat Vuong</div>
+      <div class="subtitle-text">Portfolio</div>
+    </div>
+
     <v-divider></v-divider>
-    <v-list density="compact" nav>
-      <v-list-item link title="Home" to="/"></v-list-item>
-      <v-list-item link title="About Me" to="#about"></v-list-item>
-      <v-list-item link title="Projects" to="#projects"></v-list-item>
-      <v-list-item link title="Get in Touch" to="#contact"></v-list-item>
+
+    <!--    <v-list density="compact" nav>-->
+    <!--      <v-list-item link title="Home" to="/"></v-list-item>-->
+    <!--      <v-list-item link title="About Me" to="#about"></v-list-item>-->
+    <!--      <v-list-item link title="Projects" to="#projects"></v-list-item>-->
+    <!--      <v-list-item link title="Get in Touch" to="#contact"></v-list-item>-->
+    <!--    </v-list>-->
+
+    <v-list density="compact">
+      <v-list-item
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.to"
+          class="custom-list-item"
+      >
+        <template v-slot:default>
+          <span class="nav-text">{{ item.title }}</span>
+        </template>
+      </v-list-item>
     </v-list>
+
   </v-navigation-drawer>
 </template>
 
 
 <script lang="ts" setup>
 const visible = ref<boolean>(false)
+const isHovering = ref<boolean>(false)
+
+const menuItems = [
+  {title: 'Home', to: '/'},
+  {title: 'About Me', to: '#about'},
+  {title: 'Projects', to: '#projects'},
+  {title: 'Get in Touch', to: '#contact'}
+]
 
 const showSidebar = () => {
   visible.value = true
+  isHovering.value = true
 }
 const hideSidebar = () => {
+  isHovering.value = false
   setTimeout(() => {
-    visible.value = false
-  }, 1600)
+    if (!isHovering.value) {
+      visible.value = false
+    }
+  }, 500)
 }
 </script>
 
@@ -52,8 +84,35 @@ const hideSidebar = () => {
   max-width: 100%;
   transition: max-width 0.5s ease-in-out;
   box-shadow: 4px 0 40px 2px rgba(0, 0, 0, 0);
-  font-size: 3rem;
 }
+
+.sidebar-header {
+  padding: 16px;
+}
+
+.title-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.subtitle-text {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.nav-text {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.custom-list-item {
+  padding: 12px 16px;
+  margin: 4px 0;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
 
 .hover-box {
   width: 10vh;
