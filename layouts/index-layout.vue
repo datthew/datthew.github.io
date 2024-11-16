@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-import Home from '~/components/Home.vue'
-import Sidebar from '~/components/Sidebar.vue'
-import Footer from '~/components/Footer.vue'
+import Home from '~/components/home.vue'
+import Sidebar from '~/components/sidebar.vue'
+import Footer from '~/components/footer.vue'
 </script>
 
 
