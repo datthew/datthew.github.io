@@ -125,6 +125,8 @@ const scrollToAbout = () => {
   }
 }
 const toggleText = () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+
   showCompiledText.value = !showCompiledText.value
 }
 const removeArrow = () => {
@@ -317,7 +319,7 @@ const removeArrow = () => {
 }
 
 .name {
-  font-size: 14rem;
+  font-size: 12vw;
   font-weight: 1000;
   opacity: 0;
   animation: show-name 1s ease-in-out;
@@ -335,7 +337,7 @@ const removeArrow = () => {
 }
 
 .title {
-  font-size: 3.2rem;
+  font-size: 3.2vw;
   font-weight: 700;
   color: #f5f5f5;
   opacity: 0;
@@ -396,7 +398,6 @@ const removeArrow = () => {
 
 
 @media (max-width: 1600px) {
-
   .line-group {
     flex-direction: column;
     margin-left: 50px;
@@ -407,14 +408,17 @@ const removeArrow = () => {
   }
 }
 
-/*
 @media (max-width: 1100px) {
-  .line-one, .line-two {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    border-right: 2px solid;
+  .line-one, .line-two, .line-three, .line-four, .line-five, .line-six {
+    font-size: 1.5rem;
   }
 }
- */
+
+@media (max-width: 700px) {
+  .line-one, .line-two, .line-three, .line-four, .line-five, .line-six {
+    font-size: 1rem;
+  }
+}
+
 
 </style>

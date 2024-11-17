@@ -36,8 +36,8 @@
           <div v-for="(project, index) in projects" :key="index" class="my-4">
             <!-- Toggle Button for each project -->
             <v-btn
-                :class="['project-btn text-color', {'project-dummy-game': project.title === 'Dummy Game'}]"
-                color="#303030"
+                :class="['project-title', {'project-dummy-game': project.title === 'Dummy Game'}]"
+                color="#97b0aa"
                 height="16vh"
                 max-width="1000px"
                 style="border-radius:10px;border: #b4aa99 2px solid"
@@ -49,8 +49,8 @@
             <!-- Card, only visible when project.isExpanded is true -->
             <v-expand-transition>
               <v-card v-if="project.isExpanded"
-                      class="project-card mx-auto text-color"
-                      color="#4d4637"
+                      class="project-card mx-auto"
+                      color="#2C3333"
                       elevation="12"
                       max-width="1000px"
                       style="border-radius: 10px; border-left: #b4aa99 2px solid; border-right: #b4aa99 2px solid; border-bottom: #b4aa99 2px solid"
@@ -178,24 +178,28 @@ const projects = ref([
     images: [
       {
         src: 'dummy-game-ingame.png',
-        caption: 'Screenshot des Spiels'
+        caption: 'Screenshot 1'
+      },
+      {
+        src: 'dummy-game-ingame.png',
+        caption: 'Screenshot 2'
       }
     ],
     video: null
   },
   {
-    title: 'Projekt 2',
-    details: 'Erweiterte Informationen über Projekt 2',
+    title: 'Upcoming Project',
+    details: 'This section will soon feature a new project. Stay tuned for updates on my latest developments in game design and web technologies.',
     isExpanded: false,
-    technologies: ['Vue.js', 'TypeScript', 'Unity'],
+    technologies: ['Vue.js', 'TypeScript'],
     images: [],
     video: null
   },
   {
-    title: 'Projekt 3',
-    details: 'Erweiterte Informationen über Projekt 3',
+    title: 'Upcoming Project',
+    details: 'This section will soon feature a new project. Stay tuned for updates on my latest developments in game design and web technologies.',
     isExpanded: false,
-    technologies: ['Vue.js', 'TypeScript', 'Unity'],
+    technologies: ['Java'],
     images: [],
     video: null
   },
@@ -224,7 +228,7 @@ h1 {
   max-width: 1500px;
 }
 
-.project-btn {
+.project-title {
   margin-bottom: 0;
   font-size: 1.5rem;
 }

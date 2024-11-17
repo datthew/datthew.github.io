@@ -18,19 +18,13 @@
 
     <v-divider></v-divider>
 
-    <!--    <v-list density="compact" nav>-->
-    <!--      <v-list-item link title="Home" to="/"></v-list-item>-->
-    <!--      <v-list-item link title="About Me" to="#about"></v-list-item>-->
-    <!--      <v-list-item link title="Projects" to="#projects"></v-list-item>-->
-    <!--      <v-list-item link title="Get in Touch" to="#contact"></v-list-item>-->
-    <!--    </v-list>-->
-
     <v-list density="compact">
       <v-list-item
           v-for="item in menuItems"
           :key="item.title"
           :to="item.to"
           class="custom-list-item"
+          @click="handleItemClick(item)"
       >
         <template v-slot:default>
           <span class="nav-text">{{ item.title }}</span>
@@ -65,6 +59,11 @@ const hideSidebar = () => {
     }
   }, 500)
 }
+const handleItemClick = (item: { title: string, to: string }) => {
+  if (item.title === 'Home') {
+    window.scrollTo({top: 0, behavior: 'smooth'}) // Scroll to top
+  }
+}
 </script>
 
 <style>
@@ -79,7 +78,7 @@ const hideSidebar = () => {
   top: 0;
   z-index: 10;
   transition: max-width 0.5s ease-in-out, box-shadow 1s ease-in-out;
-  box-shadow: 4px 0 40px 2px rgba(0, 0, 0, 1);
+  box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 1);
 }
 
 .sidebar-visible {
