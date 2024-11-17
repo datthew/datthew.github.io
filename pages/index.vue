@@ -61,7 +61,6 @@
                     <!-- Linke Spalte für Beschreibung -->
                     <v-col cols="12" md="6">
                       <v-card-text class="text-color">
-                        <h3 class="text-h5 mb-4">{{ project.title }}</h3>
                         <p>{{ project.details }}</p>
 
                         <!-- Technologien/Tags -->
