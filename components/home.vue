@@ -160,6 +160,7 @@ const removeArrow = () => {
   padding: 0;
 }
 
+
 .text-container {
   color: #00dc82;
   background-color: #2C3333;
@@ -319,7 +320,7 @@ const removeArrow = () => {
 }
 
 .name {
-  font-size: 12vw;
+  font-size: 11vw;
   font-weight: 1000;
   opacity: 0;
   animation: show-name 1s ease-in-out;
@@ -396,6 +397,11 @@ const removeArrow = () => {
 
 /* -------------------------------- Responsive Design -------------------------------- */
 
+@media (min-width: 2000px) {
+  .content-container {
+
+  }
+}
 
 @media (max-width: 1600px) {
   .line-group {
