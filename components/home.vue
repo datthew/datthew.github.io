@@ -111,11 +111,11 @@ onMounted(() => {
 
   setTimeout(() => {
     isArrowVisible.value = true
-  }, 3000)
+  }, 2500)
 
   setTimeout(() => {
     isButtonVisible.value = true
-  }, 2500)
+  }, 2000)
 })
 
 const scrollToAbout = () => {

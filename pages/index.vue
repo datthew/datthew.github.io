@@ -11,7 +11,7 @@
                     width="90%">
               <v-card-text style="font-size: 1.4rem">
                 <p>
-                  Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media and Games at Hochschule
+                  Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media at Hochschule
                   Trier.
                   My studies have provided me with a solid foundation in programming and design, allowing me to explore
                   the exciting intersection of technology and creativity.
