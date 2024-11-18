@@ -18,7 +18,6 @@
                 </p>
                 <p>
                   My journey into the world of technology began when I developed my first game as a hobby.
-                  This experience ignited my passion for creating engaging and interactive experiences.
                   Currently, I am working with Vue and TypeScript, which allows me to create dynamic web applications
                   while building on my JavaScript knowledge.
                 </p>
@@ -104,6 +103,7 @@
                         </v-carousel-item>
                       </v-carousel>
 
+
                       <!-- Video Section -->
                       <div v-if="project.video" class="mt-4">
                         <video
@@ -121,6 +121,7 @@
                 </v-container>
               </v-card>
             </v-expand-transition>
+
           </div>
         </section>
 
@@ -168,6 +169,7 @@
 </template>
 
 <script lang="ts" setup>
+const dialog = ref(false);
 const projects = ref([
   {
     title: 'Dummy Game',
@@ -187,8 +189,8 @@ const projects = ref([
     video: null
   },
   {
-    title: 'Upcoming Project',
-    details: 'This section will soon feature a new project. Stay tuned for updates on my latest developments in game design and web technologies.',
+    title: 'datthew.github.io',
+    details: 'This portfolio website showcases my projects and skills as a Computer Science student. Built with Vue.js and TypeScript, it features a responsive design with smooth animations, interactive project cards, and a clean, modern interface. The site implements various Vue.js features including component composition, state management with ref(), and custom transitions. Special attention was paid to user experience with intuitive navigation and aesthetic presentation of project information.',
     isExpanded: false,
     technologies: ['Vue.js', 'TypeScript'],
     images: [],
