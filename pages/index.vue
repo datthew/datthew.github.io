@@ -186,7 +186,7 @@ const projects = ref([
         caption: 'Screenshot 2'
       }
     ],
-    video: '/dummy-video.mp4'
+    video: '/small-video.mp4'
   },
   {
     title: 'datthew.github.io',
