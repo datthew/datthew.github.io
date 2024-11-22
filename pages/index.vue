@@ -35,7 +35,7 @@
           <div v-for="(project, index) in projects" :key="index" class="my-4">
             <!-- Toggle Button for each project -->
             <v-btn
-                :class="['project-title', {'project-dummy-game': project.title === 'Dummy Game'}]"
+                :class="['project-title', {'project-dummy-game': project.title === 'Dummy Game'}, {'project-website': project.title === 'datthew.github.io'}]"
                 color="#97b0aa"
                 height="16vh"
                 max-width="1000px"
@@ -186,7 +186,7 @@ const projects = ref([
         caption: 'Screenshot 2'
       }
     ],
-    video: '/small-video.mp4'
+    video: '/dummy-video.mp4'
   },
   {
     title: 'datthew.github.io',
@@ -235,7 +235,13 @@ h1 {
 }
 
 .project-dummy-game {
-  background-image: url('/dummy-game.JPG') !important;
+  background-image: url('/dummy-game-banner.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.project-website {
+  background-image: url('/website-banner.png') !important;
   background-size: cover !important;
   background-position: center !important;
 }
