@@ -74,11 +74,11 @@
                         </v-btn>
 
                         <!-- picture carousel -->
-                        <v-carousel
-                            v-if="project.images && project.images.length"
-                            height="450"
-                            hide-delimiters
-                            show-arrows="hover"
+                        <v-carousel class="mt-8"
+                                    v-if="project.images && project.images.length"
+                                    height="450"
+                                    hide-delimiters
+                                    show-arrows="hover"
                         >
                           <v-carousel-item
                               v-for="(image, i) in project.images"
@@ -98,7 +98,7 @@
                         </v-carousel>
 
                         <!-- video -->
-                        <div v-if="project.video" class="mt-4">
+                        <div v-if="project.video" class="mt-8">
                           <video
                               controls
                               width="100%"
@@ -245,6 +245,14 @@ const projects = ref([
       {
         name: 'Vue.js',
         url: 'https://vuejs.org'
+      },
+      {
+        name: 'Vuetify',
+        url: 'https://vuetifyjs.com/en/'
+      },
+      {
+        name: 'Nuxt',
+        url: 'https://nuxt.com/'
       },
       {
         name: 'TypeScript',
