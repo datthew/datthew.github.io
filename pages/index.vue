@@ -18,8 +18,8 @@
                 </p>
                 <p>
                   My journey into the world of technology began when I developed my first game as a hobby.
-                  Currently, I am working with Vue and TypeScript, which allows me to create dynamic web applications
-                  while building on my JavaScript knowledge.
+                  Currently, I am exploring the world of web development, allowing me to create dynamic applications and
+                  expand my skills in this field.
                 </p>
                 <p>
                   I welcome any questions, collaboration ideas, or simply a chance to connect!
@@ -31,98 +31,112 @@
         </section>
 
         <section id="projects">
-          <h1>Projects</h1>
-          <div v-for="(project, index) in projects" :key="index" class="my-4">
-            <!-- Toggle Button for each project -->
-            <v-btn
-                :class="['project-title', {'project-dummy-game': project.title === 'Dummy Game'}, {'project-website': project.title === 'datthew.github.io'}]"
-                color="#97b0aa"
-                height="16vh"
-                max-width="1000px"
-                style="border-radius:10px;border: #b4aa99 2px solid"
-                width="90%"
-                @click="project.isExpanded = !project.isExpanded">
-              {{ project.title }}
-            </v-btn>
+          <v-container fluid>
+            <h1>Projects</h1>
+            <div v-for="(project, index) in projects" :key="index" class="my-4">
+              <!-- Toggle Button for each project -->
+              <v-btn
+                  :class="['project-title', {'project-dummy-game': project.title === 'Dummy Game'}, {'project-website': project.title === 'datthew.github.io'}]"
+                  color="#97b0aa"
+                  height="16vh"
+                  max-width="1000px"
+                  style="border-radius:10px;border: #b4aa99 2px solid"
+                  width="90%"
+                  @click="project.isExpanded = !project.isExpanded">
+                {{ project.title }}
+              </v-btn>
 
-            <!-- Card, only visible when project.isExpanded is true -->
-            <v-expand-transition>
-              <v-card v-if="project.isExpanded"
-                      class="project-card mx-auto"
-                      color="#2C3333"
-                      elevation="12"
-                      max-width="1000px"
-                      style="border-radius: 10px; border-left: #b4aa99 2px solid; border-right: #b4aa99 2px solid; border-bottom: #b4aa99 2px solid"
-                      width="90%"
-              >
-                <v-container>
-                  <v-row>
-                    <!-- Linke Spalte für Beschreibung -->
-                    <v-col cols="12" md="6">
-                      <v-card-text class="text-color">
-                        <p>{{ project.details }}</p>
+              <!-- Card, only visible when project.isExpanded is true -->
+              <v-expand-transition>
+                <v-card v-if="project.isExpanded"
+                        class="project-card mx-auto"
+                        color="#2C3333"
+                        elevation="12"
+                        max-width="1000px"
+                        style="border-radius: 10px; border-left: #b4aa99 2px solid; border-right: #b4aa99 2px solid; border-bottom: #b4aa99 2px solid"
+                        width="90%"
+                >
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12" md="10" class="d-flex flex-column mx-auto">
 
-                        <!-- Technologien/Tags -->
-                        <div class="mt-4">
+                        <v-card-text class="text-color" style="font-size: 1.4rem">
+                          <p>{{ project.details }}</p>
+                        </v-card-text>
+
+                        <v-btn v-for="(buttons, i) in project.buttons"
+                               :key="i"
+                               :href="buttons.href"
+                               class="view-code-button"
+                               target="_blank"
+                        >
+                          {{ buttons.text }}
+                        </v-btn>
+
+                        <!-- picture carousel -->
+                        <v-carousel
+                            v-if="project.images && project.images.length"
+                            height="450"
+                            hide-delimiters
+                            show-arrows="hover"
+                        >
+                          <v-carousel-item
+                              v-for="(image, i) in project.images"
+                              :key="i"
+                          >
+                            <v-img
+                                :src="image.src"
+                                :alt="image.caption"
+                                cover
+                                height="450"
+                            >
+                              <div class="image-caption text-subtitle-1">
+                                {{ image.caption }}
+                              </div>
+                            </v-img>
+                          </v-carousel-item>
+                        </v-carousel>
+
+                        <!-- video -->
+                        <div v-if="project.video" class="mt-4">
+                          <video
+                              controls
+                              width="100%"
+                              height="auto"
+                              class="project-video"
+                          >
+                            <source :src="project.video" type="video/mp4">
+                            Your browser does not support the video format.
+                          </video>
+                        </div>
+
+                        <!-- technologies/tags -->
+                        <div class="mt-8" style="margin-top: auto;">
                           <v-chip
                               v-for="(tech, i) in project.technologies"
                               :key="i"
                               class="mr-2 mb-2"
                               color="#00bda4"
-                              text-color="white"
                           >
-                            {{ tech }}
+                            <a
+                                :href="tech.url"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style="color: inherit; text-decoration: none"
+                            >
+                              {{ tech.name }}
+                            </a>
                           </v-chip>
                         </div>
-                      </v-card-text>
-                    </v-col>
 
-                    <!-- Rechte Spalte für Medien -->
-                    <v-col cols="12" md="6">
-                      <!-- Bilder Carousel -->
-                      <v-carousel
-                          v-if="project.images && project.images.length"
-                          height="300"
-                          hide-delimiters
-                          show-arrows="hover"
-                      >
-                        <v-carousel-item
-                            v-for="(image, i) in project.images"
-                            :key="i"
-                        >
-                          <v-img
-                              :src="image.src"
-                              :alt="image.caption"
-                              cover
-                              height="300"
-                          >
-                            <div class="image-caption text-subtitle-1">
-                              {{ image.caption }}
-                            </div>
-                          </v-img>
-                        </v-carousel-item>
-                      </v-carousel>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card>
+              </v-expand-transition>
 
-
-                      <!-- Video Section -->
-                      <div v-if="project.video" class="mt-4">
-                        <video
-                            controls
-                            width="100%"
-                            height="auto"
-                            class="project-video"
-                        >
-                          <source :src="project.video" type="video/mp4">
-                          Ihr Browser unterstützt das Videoformat nicht.
-                        </video>
-                      </div>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </v-card>
-            </v-expand-transition>
-
-          </div>
+            </div>
+          </v-container>
         </section>
 
         <section id="contact">
@@ -130,7 +144,7 @@
             <h1>Get in Touch</h1>
             <v-card class="mx-auto my-5 text-color card-border" max-width="1000" style="background-color: #2C3333"
                     width="90%">
-              <v-card-text class="text-color">
+              <v-card-text class="text-color" style="font-size: 1.4rem">
                 <p>
                   If you have any questions, feel free to reach out to me:
                 </p>
@@ -169,30 +183,82 @@
 </template>
 
 <script lang="ts" setup>
-const dialog = ref(false);
 const projects = ref([
   {
     title: 'Dummy Game',
     details: 'Dummy Game is a small online PvP game where players compete to shoot or headbutt their enemies off platforms in order to win. The game features simple, fast-paced gameplay with a focus on fun and strategy as players try to outmaneuver each other and claim victory.',
     isExpanded: false,
-    technologies: ['Unity', 'C#'],
+    buttons: [],
+    technologies: [
+      {
+        name: 'Unity',
+        url: 'https://unity.com/'
+      },
+      {
+        name: 'C#',
+        url: 'https://learn.microsoft.com/en-us/dotnet/csharp/'
+      }
+    ],
     images: [
       {
         src: 'dummy-game-ingame.png',
-        caption: 'Screenshot 1'
+        caption: '1/7'
       },
       {
-        src: 'dummy-game-ingame.png',
-        caption: 'Screenshot 2'
+        src: 'dummy-game-ingame2.png',
+        caption: '2/7'
+      },
+      {
+        src: 'dummy-game-ingame3.png',
+        caption: '3/7'
+      },
+      {
+        src: 'dummy-game-ingame4.png',
+        caption: '4/7'
+      },
+      {
+        src: 'dummy-game-ingame5.png',
+        caption: '5/7'
+      },
+      {
+        src: 'dummy-game-ingame6.png',
+        caption: '6/7'
+      },
+      {
+        src: 'dummy-game-ingame7.png',
+        caption: '7/7'
       }
     ],
     video: '/dummy-video.mp4'
   },
   {
     title: 'datthew.github.io',
-    details: 'This portfolio website showcases my projects and skills as a Computer Science student. Built with Vue.js and TypeScript, it features a responsive design with smooth animations, interactive project cards, and a clean, modern interface. The site implements various Vue.js features including component composition, state management with ref(), and custom transitions. Special attention was paid to user experience with intuitive navigation and aesthetic presentation of project information.',
+    details: 'This portfolio website showcases my projects and skills as a Computer Science student. Built with Vue, Nuxt, and Vuetify, it combines responsive design with a layout that reflects my learning journey. As a student, I applied the knowledge I\'ve gained to create a site that represents my growth and passion for development.',
     isExpanded: false,
-    technologies: ['Vue.js', 'TypeScript'],
+    buttons: [
+      {
+        text: 'View source code',
+        href: "https://github.com/datthew/datthew.github.io"
+      }
+    ],
+    technologies: [
+      {
+        name: 'Vue.js',
+        url: 'https://vuejs.org'
+      },
+      {
+        name: 'TypeScript',
+        url: 'https://www.typescriptlang.org/'
+      },
+      {
+        name: 'HTML',
+        url: 'https://www.w3schools.com/html/'
+      },
+      {
+        name: 'CSS',
+        url: 'https://www.w3schools.com/css/'
+      }
+    ],
     images: [],
     video: null
   },
@@ -200,7 +266,13 @@ const projects = ref([
     title: 'Upcoming Project',
     details: 'This section will soon feature a new project. Stay tuned for updates on my latest developments in game design and web technologies.',
     isExpanded: false,
-    technologies: ['Java'],
+    buttons: [],
+    technologies: [
+      {
+        name: 'Java',
+        url: 'https://www.oracle.com/java/'
+      }
+    ],
     images: [],
     video: null
   },
@@ -251,6 +323,20 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.view-code-button {
+  color: #00bda4;
+  background-color: #2C3333;
+  border-radius: 10px;
+  max-width: 240px;
+  align-self: center;
+  margin-top: 8px;
+}
+
+.view-code-button:hover {
+  color: #00bda4;
+  border: #00bda4 2px solid;
+}
+
 .image-caption {
   position: absolute;
   bottom: 0;
@@ -272,6 +358,11 @@ h1 {
 .v-chip {
   margin-right: 8px;
   margin-bottom: 8px;
+}
+
+.v-chip:hover {
+  color: #00bda4;
+  border: #00bda4 2px solid;
 }
 
 .project-card {

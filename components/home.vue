@@ -320,7 +320,7 @@ const removeArrow = () => {
 }
 
 .name {
-  font-size: 11vw;
+  font-size: 10vw;
   font-weight: 1000;
   opacity: 0;
   animation: show-name 1s ease-in-out;
