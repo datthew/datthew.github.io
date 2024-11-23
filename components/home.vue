@@ -99,23 +99,18 @@
 
 <script lang="ts" setup>
 
-const isVisible = ref(false)
 const isArrowVisible = ref(false)
 const isButtonVisible = ref(false)
 const showCompiledText = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
-    isVisible.value = true
-  }, 800)
-
-  setTimeout(() => {
-    isArrowVisible.value = true
+    isButtonVisible.value = true
   }, 2500)
 
   setTimeout(() => {
-    isButtonVisible.value = true
-  }, 2000)
+    isArrowVisible.value = true
+  }, 3000)
 })
 
 const scrollToAbout = () => {
@@ -191,37 +186,37 @@ const removeArrow = () => {
 
 .line-one {
   animation: typing 0.5s steps(17), remove-cursor 0.5s forwards;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards;
 }
 
 .line-two {
   animation: typing 0.3s steps(9), remove-cursor 0.3s forwards;
-  animation-delay: 1.5s;
+  animation-delay: 1.0s;
   animation-fill-mode: forwards;
 }
 
 .line-three {
   animation: typing 0.3s steps(5), remove-cursor 0.3s forwards;
-  animation-delay: 1.8s;
+  animation-delay: 1.3s;
   animation-fill-mode: forwards;
 }
 
 .line-four {
   animation: typing 0.5s steps(18), remove-cursor 0.5s forwards;
-  animation-delay: 2.1s;
+  animation-delay: 1.6s;
   animation-fill-mode: forwards;
 }
 
 .line-five {
   animation: typing 1.0s steps(46), remove-cursor 1.0s forwards;
-  animation-delay: 2.6s;
+  animation-delay: 2.1s;
   animation-fill-mode: forwards;
 }
 
 .line-six {
   animation: typing 0.2s steps(5), cursor-blinking .5s step-end infinite alternate;
-  animation-delay: 3.6s, 3.8s;
+  animation-delay: 3.1s, 3.3s;
   animation-fill-mode: forwards;
 }
 
