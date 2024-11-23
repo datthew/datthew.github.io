@@ -106,11 +106,11 @@ const showCompiledText = ref(false)
 onMounted(() => {
   setTimeout(() => {
     isButtonVisible.value = true
-  }, 2500)
+  }, 3000)
 
   setTimeout(() => {
     isArrowVisible.value = true
-  }, 3000)
+  }, 3500)
 })
 
 const scrollToAbout = () => {
@@ -185,38 +185,38 @@ const removeArrow = () => {
 }
 
 .line-one {
-  animation: typing 0.5s steps(17), remove-cursor 0.5s forwards;
+  animation: typing 0.7s steps(17), remove-cursor 0.7s forwards;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
 }
 
 .line-two {
-  animation: typing 0.3s steps(9), remove-cursor 0.3s forwards;
-  animation-delay: 1.0s;
+  animation: typing 0.2s steps(9), remove-cursor 0.2s forwards;
+  animation-delay: 1.2s;
   animation-fill-mode: forwards;
 }
 
 .line-three {
   animation: typing 0.3s steps(5), remove-cursor 0.3s forwards;
-  animation-delay: 1.3s;
+  animation-delay: 1.4s;
   animation-fill-mode: forwards;
 }
 
 .line-four {
   animation: typing 0.5s steps(18), remove-cursor 0.5s forwards;
-  animation-delay: 1.6s;
+  animation-delay: 1.7s;
   animation-fill-mode: forwards;
 }
 
 .line-five {
-  animation: typing 1.0s steps(46), remove-cursor 1.0s forwards;
-  animation-delay: 2.1s;
+  animation: typing 0.7s steps(46), remove-cursor 0.7s forwards;
+  animation-delay: 2.2s;
   animation-fill-mode: forwards;
 }
 
 .line-six {
   animation: typing 0.2s steps(5), cursor-blinking .5s step-end infinite alternate;
-  animation-delay: 3.1s, 3.3s;
+  animation-delay: 2.9s, 3.1s;
   animation-fill-mode: forwards;
 }
 
