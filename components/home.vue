@@ -191,36 +191,37 @@ const removeArrow = () => {
 
 .line-one {
   animation: typing 0.5s steps(17), remove-cursor 0.5s forwards;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
 .line-two {
   animation: typing 0.3s steps(9), remove-cursor 0.3s forwards;
-  animation-delay: 0.5s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 
 .line-three {
   animation: typing 0.3s steps(5), remove-cursor 0.3s forwards;
-  animation-delay: 0.8s;
+  animation-delay: 1.8s;
   animation-fill-mode: forwards;
 }
 
 .line-four {
   animation: typing 0.5s steps(18), remove-cursor 0.5s forwards;
-  animation-delay: 1.1s;
+  animation-delay: 2.1s;
   animation-fill-mode: forwards;
 }
 
 .line-five {
   animation: typing 1.0s steps(46), remove-cursor 1.0s forwards;
-  animation-delay: 1.6s;
+  animation-delay: 2.6s;
   animation-fill-mode: forwards;
 }
 
 .line-six {
   animation: typing 0.2s steps(5), cursor-blinking .5s step-end infinite alternate;
-  animation-delay: 2.6s, 2.8s;
+  animation-delay: 3.6s, 3.8s;
   animation-fill-mode: forwards;
 }
 
@@ -398,8 +399,8 @@ const removeArrow = () => {
 /* -------------------------------- Responsive Design -------------------------------- */
 
 @media (min-width: 2000px) {
-  .content-container {
-
+  .title {
+    font-size: 2.4vw;
   }
 }
 
