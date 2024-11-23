@@ -36,7 +36,7 @@
             <div v-for="(project, index) in projects" :key="index" class="my-4">
               <!-- Toggle Button for each project -->
               <v-btn
-                  :class="['project-title', {'project-dummy-game': project.title === 'Dummy Game'}, {'project-website': project.title === 'datthew.github.io'}]"
+                  :class="['project-title', {'project-dummy-game': project.title === 'Ultimate Dummy'}, {'project-website': project.title === 'datthew.github.io'}]"
                   color="#97b0aa"
                   height="16vh"
                   max-width="1000px"
@@ -185,8 +185,8 @@
 <script lang="ts" setup>
 const projects = ref([
   {
-    title: 'Dummy Game',
-    details: 'Dummy Game is a small online PvP game where players compete to shoot or headbutt their enemies off platforms in order to win. The game features simple, fast-paced gameplay with a focus on fun and strategy as players try to outmaneuver each other and claim victory.',
+    title: 'Ultimate Dummy',
+    details: 'Ultimate Dummy is a small online PvP game where players compete to shoot or headbutt their enemies off platforms in order to win. The game features simple, fast-paced gameplay with a focus on fun and strategy as players try to outmaneuver each other and claim victory.',
     isExpanded: false,
     buttons: [],
     technologies: [
