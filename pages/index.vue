@@ -7,8 +7,8 @@
         <section id="about">
           <v-container fluid>
             <h1>About me</h1>
-            <v-card class="mx-auto my-5 text-color card-border" max-width="1000" style="background-color: #2C3333"
-                    width="90%">
+            <v-card class="mx-auto my-5 text-color card-border max-width" style="background-color: #2C3333"
+                    width="100%">
               <v-card-text style="font-size: 1.4rem">
                 <p>
                   Hello! I’m Dat Vuong, a Computer Science student specializing in Digital Media at Hochschule
@@ -39,9 +39,9 @@
                   :class="['project-title', {'project-dummy-game': project.title === 'Ultimate Dummy'}, {'project-website': project.title === 'datthew.github.io'}]"
                   color="#97b0aa"
                   height="16vh"
-                  max-width="1000px"
                   style="border-radius:10px;border: #b4aa99 2px solid"
-                  width="90%"
+                  width="100%"
+                  class="max-width"
                   @click="project.isExpanded = !project.isExpanded">
                 {{ project.title }}
               </v-btn>
@@ -49,12 +49,11 @@
               <!-- Card, only visible when project.isExpanded is true -->
               <v-expand-transition>
                 <v-card v-if="project.isExpanded"
-                        class="project-card mx-auto"
+                        class="project-card mx-auto max-width"
                         color="#2C3333"
                         elevation="12"
-                        max-width="1000px"
                         style="border-radius: 10px; border-left: #b4aa99 2px solid; border-right: #b4aa99 2px solid; border-bottom: #b4aa99 2px solid"
-                        width="90%"
+                        width="100%"
                 >
                   <v-container>
                     <v-row>
@@ -142,8 +141,8 @@
         <section id="contact">
           <v-container fluid>
             <h1>Get in Touch</h1>
-            <v-card class="mx-auto my-5 text-color card-border" max-width="1000" style="background-color: #2C3333"
-                    width="90%">
+            <v-card class="mx-auto my-5 text-color card-border max-width" style="background-color: #2C3333"
+                    width="100%">
               <v-card-text class="text-color" style="font-size: 1.4rem">
                 <p>
                   If you have any questions, feel free to reach out to me:
@@ -306,7 +305,7 @@ h1 {
 .main-content {
   padding: 0;
   background-color: #1A2121;
-  max-width: 1500px;
+  max-width: 2000px;
 }
 
 .project-title {
@@ -384,5 +383,15 @@ h1 {
 .card-border {
   border: #b4aa99 2px solid;
   border-radius: 10px;
+}
+
+.max-width {
+  max-width: 1400px;
+}
+
+@media (max-width: 1920px) {
+  .max-width {
+    max-width: 1100px;
+  }
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
 
-  <v-container class="landing-section" fluid>
+  <v-container class="landing-section pa-0" fluid>
 
     <v-row align="center" justify="center" style="overflow: hidden">
-      <v-col cols="auto">
+      <v-col cols="12">
 
-        <v-container class="content-container" fluid>
+        <template v-if="!showCompiledText">
 
-          <v-card class="text-container" flat>
-            <template v-if="!showCompiledText">
+          <v-container class="content-container pa-0" fluid>
+            <v-card class="text-container" flat>
 
               <div class="line-group">
                 <div class="line-container">
@@ -56,26 +56,27 @@
                 </div>
               </div>
 
-            </template>
+            </v-card>
+          </v-container>
 
-            <template v-else>
+        </template>
 
-              <v-card class="curtain" flat>
-                <h1 class="name">
-                  <span class="first-name">Dat</span>
-                  <span class="last-name">Vuong</span>
-                </h1>
-                <h1 class="title">
-                  Computer Science Student | Digital Media Focus
-                </h1>
-              </v-card>
+        <template v-else>
 
+          <v-container class="compiled-content-container" fluid>
+            <v-card class="curtain" flat>
+              <h1 class="name">
+                <span class="first-name">Dat</span>
+                <span class="last-name">Vuong</span>
+              </h1>
+              <h1 class="title">
+                Computer Science Student | Digital Media Focus
+              </h1>
+            </v-card>
+          </v-container>
 
-            </template>
+        </template>
 
-          </v-card>
-
-        </v-container>
       </v-col>
     </v-row>
 
@@ -150,11 +151,9 @@ const removeArrow = () => {
   display: flex;
   text-align: left;
   background-color: #2C3333;
-  width: 1500px;
+  width: 2150px;
   max-width: 100vw;
-  padding: 0;
 }
-
 
 .text-container {
   color: #00dc82;
@@ -170,7 +169,7 @@ const removeArrow = () => {
 
 .line-one, .line-two, .line-three, .line-four, .line-five, .line-six {
   display: inline-block;
-  font-size: 2rem;
+  font-size: 3rem;
   font-family: monospace;
   letter-spacing: 4px;
   border-right: 4px solid;
@@ -290,27 +289,34 @@ const removeArrow = () => {
 /* ---------------- Compile Button End  ---------------- */
 /* ---------------- Compiled Text Start ---------------- */
 
+.compiled-content-container {
+  display: flex;
+  background-color: #2C3333;
+  justify-content: center;
+  width: 100vw;
+  padding: 0;
+}
+
 .curtain {
   background-color: #1A2121;
-  justify-self: center;
   text-align: center;
   align-content: center;
   animation: open-curtain 0.8s ease-in;
   animation-fill-mode: forwards;
   position: relative;
-  z-index: 10;
 }
 
 @keyframes open-curtain {
   0% {
     height: 0;
+    width: 1px;
   }
   50% {
     height: 100vh;
     width: 1px;
   }
   100% {
-    width: 1600px;
+    width: 100%;
     height: 100vh;
   }
 }
@@ -393,9 +399,20 @@ const removeArrow = () => {
 
 /* -------------------------------- Responsive Design -------------------------------- */
 
-@media (min-width: 2000px) {
+/*@media (min-width: 2000px) {
   .title {
     font-size: 2.4vw;
+  }
+}
+*/
+
+@media (max-width: 2200px) {
+  .content-container {
+    width: 1500px;
+  }
+
+  .line-one, .line-two, .line-three, .line-four, .line-five, .line-six {
+    font-size: 2rem;
   }
 }
 
@@ -407,6 +424,10 @@ const removeArrow = () => {
 
   .line-two, .line-five {
     padding-left: 4ch;
+  }
+
+  .line-one, .line-two, .line-three, .line-four, .line-five, .line-six {
+    font-size: 2rem;
   }
 }
 
