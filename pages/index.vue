@@ -75,9 +75,9 @@
                         <!-- picture carousel -->
                         <v-carousel class="mt-8"
                                     v-if="project.images && project.images.length"
-                                    height="450"
                                     hide-delimiters
                                     show-arrows="hover"
+                                    style="height: 100%; max-height: 80vh;"
                         >
                           <v-carousel-item
                               v-for="(image, i) in project.images"
@@ -87,7 +87,7 @@
                                 :src="image.src"
                                 :alt="image.caption"
                                 cover
-                                height="450"
+                                style="aspect-ratio: 16 / 9; height: 100%;"
                             >
                               <div class="image-caption text-subtitle-1">
                                 {{ image.caption }}
